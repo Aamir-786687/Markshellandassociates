@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0B1426;
+  --color-navy-light: #152238;
+  --color-navy-muted: #1E3050;
+  --color-surface: #F8FAFC;
+  --color-surface-alt: #F1F5F9;
+  --color-muted: #64748B;
+  --color-border: #E2E8F0;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  --shadow-soft: 0 4px 24px rgba(11, 20, 38, 0.06);
+  --shadow-medium: 0 12px 40px rgba(11, 20, 38, 0.08);
+  --shadow-strong: 0 24px 60px rgba(11, 20, 38, 0.12);
+
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    @apply bg-white text-navy font-body antialiased;
+  }
+
+  ::selection {
+    @apply bg-navy text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-navy;
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-family: var(--font-display);
+  }
+
+  .container-custom {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-navy to-navy-muted bg-clip-text text-transparent;
+  }
+}
