@@ -31,8 +31,8 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <p className="text-display text-3xl font-semibold text-white md:text-4xl">Markshel Land</p>
-        <p className="mt-1 text-sm tracking-[0.3em] text-white/50 uppercase">& Associates</p>
+        <p className="text-display text-3xl font-semibold text-white md:text-4xl">Markshell and Associates</p>
+        <p className="mt-1 text-sm tracking-[0.3em] text-white/50 uppercase">Intellectual Property Law</p>
       </motion.div>
       <div className="mt-12 h-[1px] w-48 overflow-hidden bg-white/10">
         <motion.div

@@ -12,7 +12,7 @@ export function Footer() {
 
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="text-display text-2xl font-bold text-white">Markshel Land & Associates</p>
+            <p className="text-display text-2xl font-bold text-white">Markshell and Associates</p>
             <p className="mt-4 text-sm leading-relaxed">
               Premier intellectual property counsel for brands, innovators, and creators worldwide.
             </p>
@@ -61,7 +61,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs md:flex-row">
-          <p>© {new Date().getFullYear()} Markshel Land & Associates. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Markshell and Associates. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white">Privacy Policy</a>
             <a href="#" className="hover:text-white">Terms of Service</a>

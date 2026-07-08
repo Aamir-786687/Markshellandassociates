@@ -27,7 +27,7 @@ export default function HomePage() {
     <>
       <SEO
         title="Premier Intellectual Property Law Firm"
-        description="Markshel Land & Associates provides world-class IP counsel — trademarks, patents, copyright, enforcement, and litigation for innovators worldwide."
+        description="Markshell and Associates provides world-class IP counsel — trademarks, patents, copyright, enforcement, and litigation for innovators worldwide."
         path="/"
       />
 

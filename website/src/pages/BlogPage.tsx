@@ -6,7 +6,7 @@ import { blogPosts } from '@/data/content'
 export default function BlogPage() {
   return (
     <>
-      <SEO title="Blog & Insights" description="IP law insights, analysis, and strategic guidance from Markshel Land & Associates." path="/blog" image="/Images/blog-main.png" />
+      <SEO title="Blog & Insights" description="IP law insights, analysis, and strategic guidance from Markshell and Associates." path="/blog" image="/Images/blog-main.png" />
 
       <section className="pt-28 pb-16 md:pt-36">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">

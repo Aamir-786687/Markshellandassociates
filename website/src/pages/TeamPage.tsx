@@ -6,7 +6,7 @@ import { teamMembers } from '@/data/content'
 export default function TeamPage() {
   return (
     <>
-      <SEO title="Our Team" description="Meet the IP specialists at Markshel Land & Associates — attorneys, patent agents, and strategists." path="/team" image="/Images/team-main.png" />
+      <SEO title="Our Team" description="Meet the IP specialists at Markshell and Associates — attorneys, patent agents, and strategists." path="/team" image="/Images/team-main.png" />
 
       <section className="pt-28 pb-16 md:pt-36">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
@@ -31,7 +31,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="section-padding"><div className="container-custom"><FadeIn><CTABanner title="Join Our Team" description="Explore career opportunities at Markshel Land & Associates." buttonText="View Careers" buttonHref="/career" /></FadeIn></div></section>
+      <section className="section-padding"><div className="container-custom"><FadeIn><CTABanner title="Join Our Team" description="Explore career opportunities at Markshell and Associates." buttonText="View Careers" buttonHref="/career" /></FadeIn></div></section>
     </>
   )
 }

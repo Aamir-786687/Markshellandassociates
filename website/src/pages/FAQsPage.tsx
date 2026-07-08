@@ -15,7 +15,7 @@ const extraFaqs = [
 export default function FAQsPage() {
   return (
     <>
-      <SEO title="FAQs" description="Frequently asked questions about intellectual property services at Markshel Land & Associates." path="/faqs" image="/Images/faq-main.png" />
+      <SEO title="FAQs" description="Frequently asked questions about intellectual property services at Markshell and Associates." path="/faqs" image="/Images/faq-main.png" />
 
       <section className="pt-28 pb-16 md:pt-36">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">

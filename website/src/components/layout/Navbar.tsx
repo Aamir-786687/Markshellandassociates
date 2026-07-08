@@ -43,8 +43,11 @@ export function Navbar() {
       role="banner"
     >
       <div className="container-custom flex items-center justify-between">
-        <Link to="/" className="text-display text-xl font-bold text-navy md:text-2xl" aria-label="Markshel Land and Associates home">
-          Markshel <span className="font-normal text-muted">Land & Associates</span>
+        <Link to="/" className="flex items-center gap-3" aria-label="Markshell and Associates home">
+          <img src="/logo.png" alt="" className="h-11 w-11 shrink-0 rounded-full object-cover shadow-md md:h-12 md:w-12" width={48} height={48} />
+          <span className="text-display hidden text-lg leading-tight font-bold text-navy sm:block md:text-xl">
+            Markshell and Associates
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">

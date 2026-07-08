@@ -8,7 +8,7 @@ export default function Footer() {
         <img src="/Images/footer-art.png" alt="" style={{ width: '100%', height: 80, objectFit: 'cover', borderRadius: 12, opacity: 0.4, marginBottom: 32 }} loading="lazy" />
         <div className="footer-grid">
           <div>
-            <p className="logo" style={{ marginBottom: 16 }}>Markshel Land & Associates</p>
+            <p className="logo" style={{ marginBottom: 16 }}>Markshell and Associates</p>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.7 }}>Premier IP counsel — protecting innovation with color, clarity, and conviction.</p>
           </div>
           <div>
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Markshel Land & Associates</span>
+          <span>© 2026 Markshell and Associates</span>
           <span>Privacy · Terms · Disclaimer</span>
         </div>
       </div>

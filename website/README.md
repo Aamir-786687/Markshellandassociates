@@ -1,4 +1,4 @@
-# Markshel Land & Associates — Production React Website
+# Markshell and Associates — Production React Website
 
 Premium, production-ready React 19 application for an intellectual property law firm.
 

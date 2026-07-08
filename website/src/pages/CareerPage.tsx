@@ -15,7 +15,7 @@ const benefits = [
 export default function CareerPage() {
   return (
     <>
-      <SEO title="Careers" description="Build your IP career at Markshel Land & Associates. Explore open positions and our culture of excellence." path="/career" image="/Images/career-main.png" />
+      <SEO title="Careers" description="Build your IP career at Markshell and Associates. Explore open positions and our culture of excellence." path="/career" image="/Images/career-main.png" />
 
       <section className="pt-28 pb-16 md:pt-36">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">

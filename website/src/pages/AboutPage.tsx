@@ -14,14 +14,14 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      <SEO title="About Us" description="Learn about Markshel Land & Associates — eighteen years of premier intellectual property counsel for innovators worldwide." path="/about" image="/Images/about-main.png" />
+      <SEO title="About Us" description="Learn about Markshell and Associates — eighteen years of premier intellectual property counsel for innovators worldwide." path="/about" image="/Images/about-main.png" />
 
       <section className="pt-28 pb-16 md:pt-36">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
           <FadeIn type="fadeLeft">
             <p className="text-xs font-semibold tracking-widest text-muted uppercase">About Us</p>
             <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl lg:text-6xl">Eighteen Years of IP Excellence</h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted">Founded on the belief that intellectual property is the foundation of modern enterprise, Markshel Land & Associates has grown into trusted counsel for innovators across six continents.</p>
+            <p className="mt-6 text-lg leading-relaxed text-muted">Founded on the belief that intellectual property is the foundation of modern enterprise, Markshell and Associates has grown into trusted counsel for innovators across six continents.</p>
           </FadeIn>
           <FadeIn type="fadeRight">
             <ImageReveal src="/Images/about-main.png" alt="Abstract illustration of firm history and innovation timeline" className="rounded-3xl shadow-medium" />

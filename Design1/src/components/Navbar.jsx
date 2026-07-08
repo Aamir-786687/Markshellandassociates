@@ -18,7 +18,10 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="nav-inner">
-        <Link to="/" className="logo">Markshel Land & Associates</Link>
+        <Link to="/" className="nav-brand" aria-label="Markshell and Associates home">
+          <img src="/logo.png" alt="" className="nav-logo" width={48} height={48} />
+          <span className="logo-text">Markshell and Associates</span>
+        </Link>
         <nav className={`nav-links ${open ? 'open' : ''}`}>
           {links.map(([to, label]) => (
             <NavLink key={to} to={to} end={to === '/'} onClick={() => setOpen(false)}>

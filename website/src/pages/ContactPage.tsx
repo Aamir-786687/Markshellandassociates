@@ -31,7 +31,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <SEO title="Contact Us" description="Get in touch with Markshel Land & Associates for a confidential IP consultation." path="/contact" image="/Images/contact-main.png" />
+      <SEO title="Contact Us" description="Get in touch with Markshell and Associates for a confidential IP consultation." path="/contact" image="/Images/contact-main.png" />
 
       <section className="pt-28 pb-16 md:pt-36">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">

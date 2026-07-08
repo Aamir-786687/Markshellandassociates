@@ -12,7 +12,7 @@ export const services = [
 ]
 
 export const team = [
-  { name: 'Eleanor Markshel', role: 'Managing Partner' },
+  { name: 'Eleanor Markshell', role: 'Managing Partner' },
   { name: 'David Okonkwo', role: 'Patent Attorney' },
   { name: 'Priya Sharma', role: 'Trademark Counsel' },
   { name: 'James Whitfield', role: 'Litigation Lead' },

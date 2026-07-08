@@ -1,4 +1,4 @@
-# Design Strategy — Markshel Land & Associates
+# Design Strategy — Markshell and Associates
 
 ## Phase 1: Research & Design Strategy
 

@@ -33,6 +33,9 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 8px 32px rgba(13, 79, 79, 0.1);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 0.625rem; }
+.nav-logo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.logo-text { font-family: var(--font-d); font-size: 0.95rem; font-weight: 700; line-height: 1.2; color: var(--teal); max-width: 120px; }
 .logo { font-family: var(--font-d); font-size: 1.15rem; font-weight: 700; color: var(--teal); }
 .nav-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
 .nav-links a { color: #6B5B6E; font-size: 0.8125rem; font-weight: 500; }
@@ -106,4 +109,6 @@ img { max-width: 100%; display: block; }
   .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); padding: 1rem; border-radius: 1rem; margin-top: 0.5rem; border: 1px solid rgba(13,79,79,0.15); }
   .mobile-toggle { display: block; }
   .btn-nav { display: none; }
+  .logo-text { display: none; }
+  .nav-logo { width: 36px; height: 36px; }
 }

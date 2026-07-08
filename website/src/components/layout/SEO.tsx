@@ -13,12 +13,12 @@ const DEFAULT_IMAGE = '/Images/hero-main.png'
 
 export function SEO({ title, description, path = '', image = DEFAULT_IMAGE, type = 'website' }: SEOProps) {
   const url = `${SITE_URL}${path}`
-  const fullTitle = `${title} | Markshel Land & Associates`
+  const fullTitle = `${title} | Markshell and Associates`
 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
-    name: 'Markshel Land & Associates',
+    name: 'Markshell and Associates',
     description: 'Premier intellectual property law firm specializing in trademarks, patents, copyright, and IP enforcement.',
     url: SITE_URL,
     areaServed: 'Worldwide',
@@ -36,7 +36,7 @@ export function SEO({ title, description, path = '', image = DEFAULT_IMAGE, type
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
       <meta property="og:image" content={`${SITE_URL}${image}`} />
-      <meta property="og:site_name" content="Markshel Land & Associates" />
+      <meta property="og:site_name" content="Markshell and Associates" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
