@@ -123,7 +123,6 @@ export const testimonials = [
   { id: '3', quote: 'Their due diligence team identified critical IP risks in our acquisition that saved us millions. Truly world-class expertise.', author: 'Michael Torres', role: 'VP Corporate Development', company: 'Vertex Holdings' },
 ]
 
-export const trustClients = ['NOVA TECH', 'ARTISAN CO.', 'MERIDIAN', 'VERTEX', 'LUMINA', 'APEX BIO', 'STRATOS', 'PRISM']
 
 export const industries = [
   { title: 'Technology & Software', description: 'Patent portfolios, open-source compliance, and SaaS IP strategy.' },
