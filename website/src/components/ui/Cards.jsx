@@ -64,18 +64,17 @@ export function TeamCard({ name, role, expertise, className }) {
   )
 }
 
-export function BlogCard({ post, featured, className }) {
+export function BlogCard({ post, className }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
       className={cn(
         'group block overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-medium',
-        featured && 'md:col-span-2 md:grid md:grid-cols-2',
         className,
       )}
     >
-      <div className={cn('aspect-[16/10] bg-surface', featured && 'md:aspect-auto md:h-full')}>
-        <img src="/Images/blog-main.png" alt="" loading="lazy" className="h-full w-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" />
+      <div className="aspect-[16/10] bg-surface">
+        <img src={post.image} alt={post.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
       </div>
       <div className="p-6 md:p-8">
         <div className="flex items-center gap-3 text-xs text-muted">
@@ -85,7 +84,7 @@ export function BlogCard({ post, featured, className }) {
           <span>·</span>
           <span>{post.readTime}</span>
         </div>
-        <h3 className={cn('text-display mt-3 font-semibold text-navy group-hover:text-navy-light', featured ? 'text-2xl md:text-3xl' : 'text-lg')}>
+        <h3 className="text-display mt-3 text-lg font-semibold text-navy group-hover:text-navy-light">
           {post.title}
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">{post.excerpt}</p>
