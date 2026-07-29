@@ -77,21 +77,38 @@ export default function HomePage() {
         <Marquee items={trustClients} />
       </section>
 
-      {/* Practice Areas */}
+      {/* Services */}
       <section className="section-padding bg-surface" aria-labelledby="practice-heading">
         <div className="container-custom">
           <FadeIn className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Practice Areas</p>
+            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Our Services</p>
             <h2 id="practice-heading" className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Comprehensive IP Protection</h2>
             <p className="mt-4 text-lg text-muted">From registration to enforcement, we safeguard every dimension of your intellectual property portfolio.</p>
           </FadeIn>
-          <StaggerContainer className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.slice(0, 6).map((service, i) => (
-              <StaggerItem key={service.slug}>
-                <ServiceCard service={service} index={i} />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <FadeIn delay={0.15} className="mt-16">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={32}
+              slidesPerView={1}
+              slidesPerGroup={1}
+              loop
+              speed={600}
+              breakpoints={{
+                640: { slidesPerView: 2, slidesPerGroup: 1 },
+                1024: { slidesPerView: 3, slidesPerGroup: 1 },
+              }}
+              autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+              pagination={{ clickable: true }}
+              className="services-carousel !pb-12"
+              aria-label="Intellectual property services carousel"
+            >
+              {services.map((service, i) => (
+                <SwiperSlide key={service.slug} className="!h-auto">
+                  <ServiceCard service={service} index={i} className="h-full" />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </FadeIn>
           <FadeIn className="mt-12 text-center">
             <Button href="/services" variant="outline">View All 10 Services</Button>
           </FadeIn>
@@ -216,9 +233,8 @@ export default function HomePage() {
             </div>
             <Link to="/blog" className="inline-flex items-center gap-1 text-sm font-semibold text-navy">Read All <ArrowRight className="h-4 w-4" /></Link>
           </FadeIn>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <BlogCard post={blogPosts[0]} featured className="lg:col-span-2 lg:row-span-1" />
-            {blogPosts.slice(1, 3).map((post) => (
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {blogPosts.slice(0, 3).map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
           </div>

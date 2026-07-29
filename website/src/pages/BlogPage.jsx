@@ -4,9 +4,11 @@ import { FadeIn, ImageReveal } from '@/components/animations/MotionPrimitives'
 import { blogPosts } from '@/data/content'
 
 export default function BlogPage() {
+  const latestPost = blogPosts[0]
+
   return (
     <>
-      <SEO title="Blog & Insights" description="IP law insights, analysis, and strategic guidance from Markshell and Associates." path="/blog" image="/Images/blog-main.png" />
+      <SEO title="Blog & Insights" description="IP law insights, analysis, and strategic guidance from Markshell and Associates." path="/blog" image={latestPost.image} />
 
       <section className="pt-36 pb-16 md:pt-44">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
@@ -16,19 +18,16 @@ export default function BlogPage() {
             <p className="mt-6 text-lg text-muted">Analysis, updates, and strategic guidance from our attorneys and IP specialists.</p>
           </FadeIn>
           <FadeIn type="fadeRight">
-            <ImageReveal src="/Images/blog-main.png" alt="Blog and insights illustration" className="rounded-3xl shadow-medium" />
+            <ImageReveal src={latestPost.image} alt={latestPost.title} className="rounded-3xl shadow-medium" />
           </FadeIn>
         </div>
       </section>
 
       <section className="section-padding bg-surface">
-        <div className="container-custom grid gap-6 md:grid-cols-2">
-          <BlogCard post={blogPosts[0]} featured />
-          <div className="grid gap-6">
-            {blogPosts.slice(1).map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
-          </div>
+        <div className="container-custom grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {blogPosts.map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
         </div>
       </section>
     </>

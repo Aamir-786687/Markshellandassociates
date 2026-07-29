@@ -11,6 +11,7 @@ const ServicesPage = lazy(() => import('@/pages/ServicesPage'))
 const ServiceDetailPage = lazy(() => import('@/pages/ServiceDetailPage'))
 const TeamPage = lazy(() => import('@/pages/TeamPage'))
 const BlogPage = lazy(() => import('@/pages/BlogPage'))
+const BlogDetailPage = lazy(() => import('@/pages/BlogDetailPage'))
 const CareerPage = lazy(() => import('@/pages/CareerPage'))
 const FAQsPage = lazy(() => import('@/pages/FAQsPage'))
 const ContactPage = lazy(() => import('@/pages/ContactPage'))
@@ -41,7 +42,7 @@ export default function App() {
                 <Route path="services/:slug" element={<Suspense fallback={<PageLoader />}><ServiceDetailPage /></Suspense>} />
                 <Route path="team" element={<Suspense fallback={<PageLoader />}><TeamPage /></Suspense>} />
                 <Route path="blog" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
-                <Route path="blog/:slug" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
+                <Route path="blog/:slug" element={<Suspense fallback={<PageLoader />}><BlogDetailPage /></Suspense>} />
                 <Route path="career" element={<Suspense fallback={<PageLoader />}><CareerPage /></Suspense>} />
                 <Route path="faqs" element={<Suspense fallback={<PageLoader />}><FAQsPage /></Suspense>} />
                 <Route path="contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
