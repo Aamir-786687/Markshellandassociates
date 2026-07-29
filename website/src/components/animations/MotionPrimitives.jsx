@@ -142,16 +142,28 @@ export function FloatingShape({ className }) {
   )
 }
 
-export function Marquee({ items, className }) {
-  const doubled = [...items, ...items]
+export function Marquee({ items, images, className }) {
+  const list = images ?? items ?? []
+  const doubled = [...list, ...list]
   return (
     <div className={cn('overflow-hidden', className)} aria-hidden="true">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {doubled.map((item, i) => (
-          <span key={`${item}-${i}`} className="mx-8 text-display text-2xl font-semibold tracking-wider text-navy/20 md:text-3xl">
-            {item}
-          </span>
-        ))}
+      <div className="flex animate-marquee items-center whitespace-nowrap">
+        {doubled.map((item, i) =>
+          images ? (
+            <img
+              key={`${item}-${i}`}
+              src={item}
+              alt=""
+              className="mx-8 h-[1.5rem] w-auto max-w-[11rem] flex-shrink-0 object-contain md:h-[1.875rem]"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <span key={`${item}-${i}`} className="mx-8 text-display text-2xl font-semibold tracking-wider text-navy/20 md:text-3xl">
+              {item}
+            </span>
+          ),
+        )}
       </div>
     </div>
   )
