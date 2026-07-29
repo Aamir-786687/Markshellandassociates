@@ -154,7 +154,7 @@ export function Marquee({ items, images, className }) {
               key={`${item}-${i}`}
               src={item}
               alt=""
-              className="mx-8 h-[1.5rem] w-auto max-w-[11rem] flex-shrink-0 object-contain md:h-[1.875rem]"
+              className="mx-8 size-[1in] flex-shrink-0 object-contain"
               loading="lazy"
               decoding="async"
             />
