@@ -6,6 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { SEO } from '@/components/layout/SEO'
+import { FIRM_NAME } from '@/data/brand'
 import { Button } from '@/components/ui/Button'
 import { Accordion } from '@/components/ui/Accordion'
 import { ServiceCard, TeamCard, BlogCard, TestimonialCard, Timeline, CTABanner } from '@/components/ui/Cards'
@@ -28,7 +29,7 @@ export default function HomePage() {
     <>
       <SEO
         title="Premier Intellectual Property Law Firm"
-        description="Markshell and Associates provides world-class IP counsel — trademarks, patents, copyright, enforcement, and litigation for innovators worldwide."
+        description={`${FIRM_NAME} provides world-class IP counsel — trademarks, patents, copyright, enforcement, and litigation for innovators worldwide.`}
         path="/"
       />
 
@@ -40,7 +41,7 @@ export default function HomePage() {
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <FadeIn>
-              <p className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Intellectual Property Law</p>
+              <p className="section-eyebrow tracking-[0.2em]">Intellectual Property Law</p>
             </FadeIn>
             <h1 id="hero-heading" className="text-display mt-6 text-5xl leading-[1.08] font-semibold text-navy md:text-6xl lg:text-7xl">
               <TextReveal text="Protecting Innovation With Precision" />
@@ -74,7 +75,7 @@ export default function HomePage() {
 
       {/* Trust */}
       <section className="border-y border-border py-10" aria-label="Trusted by industry leaders">
-        <p className="container-custom mb-6 text-center text-xs font-semibold tracking-widest text-muted uppercase">Trusted by industry leaders</p>
+        <p className="container-custom section-eyebrow mb-6 text-center">Trusted by industry leaders</p>
         <Marquee images={trustClientLogos} imageSrc={getClientLogoSrc} />
       </section>
 
@@ -82,7 +83,7 @@ export default function HomePage() {
       <section className="section-padding bg-surface" aria-labelledby="practice-heading">
         <div className="container-custom">
           <FadeIn className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Our Services</p>
+            <p className="section-eyebrow">Our Services</p>
             <h2 id="practice-heading" className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Comprehensive IP Protection</h2>
             <p className="mt-4 text-lg text-muted">From registration to enforcement, we safeguard every dimension of your intellectual property portfolio.</p>
           </FadeIn>
@@ -120,7 +121,7 @@ export default function HomePage() {
       <section className="section-padding" aria-labelledby="why-heading">
         <div className="container-custom grid items-center gap-16 lg:grid-cols-2">
           <FadeIn type="fadeLeft">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Why Choose Us</p>
+            <p className="section-eyebrow">Why Choose Us</p>
             <h2 id="why-heading" className="text-display mt-4 text-4xl font-semibold text-navy">A Firm Built for the IP Economy</h2>
             <p className="mt-6 text-lg leading-relaxed text-muted">
               Our attorneys combine deep technical fluency with refined legal strategy — delivering outcomes that protect what you&apos;ve built and accelerate what comes next.
@@ -128,7 +129,7 @@ export default function HomePage() {
             <ul className="mt-8 space-y-4">
               {['End-to-end IP lifecycle management', 'Cross-border registration expertise', 'Litigation-ready enforcement teams'].map((item, i) => (
                 <li key={item} className="flex items-start gap-4">
-                  <span className="text-display text-lg font-bold text-navy">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-display text-lg font-bold text-gold">{String(i + 1).padStart(2, '0')}</span>
                   <span className="text-muted">{item}</span>
                 </li>
               ))}
@@ -148,7 +149,7 @@ export default function HomePage() {
       <section className="section-padding bg-surface" aria-labelledby="process-heading">
         <div className="container-custom">
           <FadeIn className="text-center">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Our Process</p>
+            <p className="section-eyebrow">Our Process</p>
             <h2 id="process-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Five Steps to Protection</h2>
           </FadeIn>
           <div className="mt-16">
@@ -161,7 +162,7 @@ export default function HomePage() {
       <section className="section-padding" aria-labelledby="industry-heading">
         <div className="container-custom">
           <FadeIn className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Industry Expertise</p>
+            <p className="section-eyebrow">Industry Expertise</p>
             <h2 id="industry-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Deep Sector Knowledge</h2>
           </FadeIn>
           <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -181,7 +182,7 @@ export default function HomePage() {
       <section className="section-padding bg-surface" aria-labelledby="testimonials-heading">
         <div className="container-custom">
           <FadeIn>
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Client Testimonials</p>
+            <p className="section-eyebrow">Client Testimonials</p>
             <h2 id="testimonials-heading" className="text-display mt-4 text-4xl font-semibold text-navy">What Our Clients Say</h2>
           </FadeIn>
           <Swiper
@@ -207,10 +208,10 @@ export default function HomePage() {
         <div className="container-custom">
           <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <p className="text-xs font-semibold tracking-widest text-muted uppercase">Our Team</p>
+              <p className="section-eyebrow">Our Team</p>
               <h2 id="team-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Meet Our IP Specialists</h2>
             </div>
-            <Link to="/team" className="inline-flex items-center gap-1 text-sm font-semibold text-navy hover:gap-2 transition-all">
+            <Link to="/team" className="inline-flex items-center gap-1 text-sm font-semibold text-gold hover:text-gold-dark transition-all">
               View Full Team <ArrowRight className="h-4 w-4" />
             </Link>
           </FadeIn>
@@ -229,10 +230,10 @@ export default function HomePage() {
         <div className="container-custom">
           <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <p className="text-xs font-semibold tracking-widest text-muted uppercase">Featured Insights</p>
+              <p className="section-eyebrow">Featured Insights</p>
               <h2 id="blog-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Latest from Our Blog</h2>
             </div>
-            <Link to="/blog" className="inline-flex items-center gap-1 text-sm font-semibold text-navy">Read All <ArrowRight className="h-4 w-4" /></Link>
+            <Link to="/blog" className="inline-flex items-center gap-1 text-sm font-semibold text-gold hover:text-gold-dark">Read All <ArrowRight className="h-4 w-4" /></Link>
           </FadeIn>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {blogPosts.slice(0, 3).map((post) => (
@@ -246,7 +247,7 @@ export default function HomePage() {
       <section className="section-padding" aria-labelledby="faq-heading">
         <div className="container-custom max-w-3xl">
           <FadeIn className="text-center">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">FAQs</p>
+            <p className="section-eyebrow">FAQs</p>
             <h2 id="faq-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Common Questions</h2>
           </FadeIn>
           <FadeIn delay={0.2} className="mt-10">

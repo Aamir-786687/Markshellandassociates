@@ -30,7 +30,7 @@ export default function BlogDetailPage() {
           ]} />
 
           <FadeIn>
-            <Link to="/blog" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy hover:text-navy-light">
+            <Link to="/blog" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-dark">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Back to Blog
             </Link>
@@ -38,7 +38,7 @@ export default function BlogDetailPage() {
 
           <FadeIn delay={0.05}>
             <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-muted">
-              <span className="font-semibold tracking-wider text-navy uppercase">{post.category}</span>
+              <span className="section-eyebrow normal-case tracking-wider">{post.category}</span>
               <span aria-hidden="true">·</span>
               <time dateTime={post.date}>{post.date}</time>
               <span aria-hidden="true">·</span>

@@ -11,7 +11,7 @@ export default function ServicesPage() {
       <section className="pt-36 pb-16 md:pt-44">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
           <FadeIn type="fadeLeft">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Our Services</p>
+            <p className="section-eyebrow">Our Services</p>
             <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Intellectual Property Services</h1>
             <p className="mt-6 text-lg text-muted">Ten specialized practice areas designed to protect, enforce, and maximize the value of your intellectual assets.</p>
           </FadeIn>

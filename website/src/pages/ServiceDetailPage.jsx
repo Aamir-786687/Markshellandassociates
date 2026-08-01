@@ -34,7 +34,7 @@ export default function ServiceDetailPage() {
 
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <FadeIn type="fadeLeft">
-              <p className="text-xs font-semibold tracking-widest text-muted uppercase">Service</p>
+              <p className="section-eyebrow">Service</p>
               <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl lg:text-6xl">{service.title}</h1>
               <p className="mt-6 text-lg leading-relaxed text-muted">{service.shortDescription}</p>
               <div className="mt-8">
@@ -66,7 +66,7 @@ export default function ServiceDetailPage() {
             {service.benefits.map((benefit) => (
               <StaggerItem key={benefit}>
                 <div className="flex items-start gap-3 rounded-xl border border-border p-5">
-                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-navy" />
+                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-gold" />
                   <span className="text-muted">{benefit}</span>
                 </div>
               </StaggerItem>

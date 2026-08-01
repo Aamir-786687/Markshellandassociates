@@ -1,12 +1,11 @@
 export const statistics = [
-  { value: 2400, suffix: '+', label: 'Registrations Filed' },
+  { value: 1000, suffix: '+', label: 'Registrations Filed' },
   { value: 98, suffix: '%', label: 'Client Retention' },
-  { value: 18, suffix: '', label: 'Years of Excellence' },
-  { value: 40, suffix: '+', label: 'Jurisdictions Served' },
+  { value: 9, suffix: '', label: 'Years of Excellence' },
 ]
 
 export const teamMembers = [
-  { id: '1', name: 'Eleanor Markshell', role: 'Managing Partner', bio: 'Leading IP strategist with 20 years of cross-border trademark and patent experience.', expertise: ['Trademark Strategy', 'Global Portfolio Management', 'M&A Due Diligence'] },
+  { id: '1', name: 'Mohammad Awais', role: 'Founder and Managing Director', bio: 'Leading IP strategist with 20 years of cross-border trademark and patent experience.', expertise: ['Trademark Strategy', '', 'M&A Due Diligence'] },
   { id: '2', name: 'David Okonkwo', role: 'Partner — Patents', bio: 'Former patent examiner specializing in biotechnology and medical device prosecution.', expertise: ['Patent Prosecution', 'PCT Filings', 'Freedom to Operate'] },
   { id: '3', name: 'Priya Sharma', role: 'Partner — Trademarks', bio: 'Recognized trademark counsel with expertise in brand enforcement and licensing.', expertise: ['Trademark Registration', 'Enforcement', 'Brand Licensing'] },
   { id: '4', name: 'James Whitfield', role: 'Partner — Litigation', bio: 'Trial attorney with extensive IP litigation experience before federal courts.', expertise: ['IP Litigation', 'Injunctions', 'Appeals'] },
@@ -118,7 +117,7 @@ export function getBlogBySlug(slug) {
 }
 
 export const testimonials = [
-  { id: '1', quote: 'Markshell and Associates transformed our IP strategy from reactive to proactive. Their precision and responsiveness set a new standard for legal counsel.', author: 'Sarah Chen', role: 'Chief Legal Officer', company: 'Nova Tech Industries' },
+  { id: '1', quote: 'Markshell & Associates transformed our IP strategy from reactive to proactive. Their precision and responsiveness set a new standard for legal counsel.', author: 'Sarah Chen', role: 'Chief Legal Officer', company: 'Nova Tech Industries' },
   { id: '2', quote: 'Exceptional counsel on trademark enforcement. They protected our brand with sophistication and unwavering commitment to our business objectives.', author: 'Rajesh Mehta', role: 'Founder & CEO', company: 'Artisan Co.' },
   { id: '3', quote: 'Their due diligence team identified critical IP risks in our acquisition that saved us millions. Truly world-class expertise.', author: 'Michael Torres', role: 'VP Corporate Development', company: 'Vertex Holdings' },
 ]

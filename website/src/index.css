@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0B1426;
-  --color-navy-light: #152238;
-  --color-navy-muted: #1E3050;
+  /* Logo palette: deep blue + gold */
+  --color-navy: #05162B;
+  --color-navy-light: #0A2342;
+  --color-navy-muted: #0F2D52;
+  --color-gold: #C59D5F;
+  --color-gold-light: #D4AF7A;
+  --color-gold-dark: #A67C42;
   --color-surface: #F8FAFC;
   --color-surface-alt: #F1F5F9;
-  --color-muted: #64748B;
+  --color-muted: #4A6278;
   --color-border: #E2E8F0;
 
   --font-display: "Libre Baskerville", "Times New Roman", Georgia, serif;
@@ -19,9 +23,9 @@
   --radius-2xl: 2rem;
   --radius-full: 9999px;
 
-  --shadow-soft: 0 4px 24px rgba(11, 20, 38, 0.06);
-  --shadow-medium: 0 12px 40px rgba(11, 20, 38, 0.08);
-  --shadow-strong: 0 24px 60px rgba(11, 20, 38, 0.12);
+  --shadow-soft: 0 4px 24px rgba(5, 22, 43, 0.06);
+  --shadow-medium: 0 12px 40px rgba(5, 22, 43, 0.08);
+  --shadow-strong: 0 24px 60px rgba(5, 22, 43, 0.12);
 
   --animate-marquee: marquee 40s linear infinite;
 }
@@ -50,11 +54,11 @@
   }
 
   ::selection {
-    @apply bg-navy text-white;
+    @apply bg-navy text-gold;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-navy;
+    @apply outline-2 outline-offset-2 outline-gold;
   }
 }
 
@@ -73,6 +77,10 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-navy to-navy-muted bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-navy via-navy-muted to-gold bg-clip-text text-transparent;
+  }
+
+  .section-eyebrow {
+    @apply text-xs font-semibold tracking-widest uppercase text-gold;
   }
 }

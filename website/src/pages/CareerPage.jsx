@@ -1,3 +1,4 @@
+import { FIRM_NAME } from '@/data/brand'
 import { SEO } from '@/components/layout/SEO'
 import { Button } from '@/components/ui/Button'
 import { CTABanner } from '@/components/ui/Cards'
@@ -15,12 +16,12 @@ const benefits = [
 export default function CareerPage() {
   return (
     <>
-      <SEO title="Careers" description="Build your IP career at Markshell and Associates. Explore open positions and our culture of excellence." path="/career" image="/Images/career-main.png" />
+      <SEO title="Careers" description={`Build your IP career at ${FIRM_NAME}. Explore open positions and our culture of excellence.`} path="/career" image="/Images/career-main.png" />
 
       <section className="pt-36 pb-16 md:pt-44">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
           <FadeIn type="fadeLeft">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Careers</p>
+            <p className="section-eyebrow">Careers</p>
             <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Build Your IP Career</h1>
             <p className="mt-6 text-lg text-muted">Join a firm where precision, innovation, and professional growth converge.</p>
           </FadeIn>
@@ -37,7 +38,7 @@ export default function CareerPage() {
             <p className="mt-4 text-muted">We foster an environment of intellectual curiosity, collaborative excellence, and genuine commitment to client success. Every team member contributes to shaping the future of IP law.</p>
             <ul className="mt-8 space-y-3">
               {benefits.map((b) => (
-                <li key={b} className="flex items-start gap-3 text-sm text-muted"><span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-navy" />{b}</li>
+                <li key={b} className="flex items-start gap-3 text-sm text-muted"><span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" />{b}</li>
               ))}
             </ul>
           </FadeIn>

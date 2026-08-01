@@ -14,7 +14,7 @@ export function Accordion({ items, className }) {
           <div key={item.question} className="py-1">
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 py-5 text-left font-medium text-navy transition-colors hover:text-navy-light"
+              className="flex w-full items-center justify-between gap-4 py-5 text-left font-medium text-navy transition-colors hover:text-gold"
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
             >
