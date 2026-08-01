@@ -7,7 +7,7 @@ const PHONE = '+91 9211978238'
 const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/people/Mark-Shell/pfbid082c8AAaqb5pVJ8vvRLAmJqcK2VqQzqhgayu8WmussZoWkaeHo6MNCFXzXcyRaRGml/?sk=about', Icon: FacebookIcon },
   { label: 'Instagram', href: 'https://www.instagram.com/markshellandassociates/', Icon: InstagramIcon },
-  { label: 'X (Twitter)', href: 'https://x.com/MarkshellA65927', Icon: XIcon },
+  { label: 'X (Twitter)', href: '#', Icon: XIcon },
   { label: 'LinkedIn', href: '#', Icon: LinkedInIcon },
 ]
 

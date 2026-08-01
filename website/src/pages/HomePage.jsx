@@ -13,7 +13,7 @@ import { FadeIn, StaggerContainer, StaggerItem, ImageReveal, TextReveal, Marquee
 import { AnimatedCounter } from '@/components/ui/Button'
 import { services } from '@/data/services'
 import { statistics, teamMembers, blogPosts, testimonials, industries, homeFaqs } from '@/data/content'
-import { trustClientLogos } from '@/data/trustClientLogos'
+import { trustClientLogos, getClientLogoSrc } from '@/data/trustClientLogos'
 
 const processSteps = [
   { step: 1, title: 'Discovery', description: 'Understand your IP assets and objectives' },
@@ -75,7 +75,7 @@ export default function HomePage() {
       {/* Trust */}
       <section className="border-y border-border py-10" aria-label="Trusted by industry leaders">
         <p className="container-custom mb-6 text-center text-xs font-semibold tracking-widest text-muted uppercase">Trusted by industry leaders</p>
-        <Marquee images={trustClientLogos} />
+        <Marquee images={trustClientLogos} imageSrc={getClientLogoSrc} />
       </section>
 
       {/* Services */}

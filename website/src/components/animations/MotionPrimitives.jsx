@@ -142,9 +142,10 @@ export function FloatingShape({ className }) {
   )
 }
 
-export function Marquee({ items, images, className }) {
+export function Marquee({ items, images, className, imageSrc }) {
   const list = images ?? items ?? []
   const doubled = [...list, ...list]
+  const resolveSrc = imageSrc ?? ((item) => (item.startsWith('/') ? item : item))
   return (
     <div className={cn('overflow-hidden', className)} aria-hidden="true">
       <div className="flex animate-marquee items-center whitespace-nowrap">
@@ -152,7 +153,7 @@ export function Marquee({ items, images, className }) {
           images ? (
             <img
               key={`${item}-${i}`}
-              src={item}
+              src={resolveSrc(item)}
               alt=""
               className="mx-8 size-[1in] flex-shrink-0 object-contain"
               loading="lazy"
