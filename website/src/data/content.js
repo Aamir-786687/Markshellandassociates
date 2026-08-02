@@ -110,6 +110,201 @@ export const blogPosts = [
       'Before grant, review continuation and divisional options, foreign filing timelines, and maintenance obligations so the portfolio remains aligned with R&D roadmaps and enforcement priorities.',
     ],
   },
+  {
+    id: '8',
+    slug: 'trademark-infringement-vs-passing-off-india',
+    title: 'Trademark Infringement vs. Passing Off in India: Key Differences and Legal Remedies',
+    excerpt: 'Registered marks rely on statutory infringement actions; unregistered brands may still pursue passing off—learn how the remedies differ and what courts can grant.',
+    category: 'Trademark',
+    date: '2026-08-02',
+    readTime: '6 min read',
+    image: '/Images/blog-main.png',
+    author: 'Mozammil Zafar',
+    keywords: [
+      'Trademark Infringement',
+      'Passing Off',
+      'Trade Marks Act 1999',
+      'Intellectual Property Law',
+      'Brand Protection',
+      'Trademark Registration',
+      'India',
+    ],
+    sections: [
+      {
+        heading: 'Introduction',
+        paragraphs: [
+          'A trademark is a valuable business asset that distinguishes the goods or services of one enterprise from another. However, the value of a trademark can be seriously affected when competitors misuse a similar mark. Indian law protects trademark owners through two important legal remedies: trademark infringement and the common law action of passing off. Although both aim to prevent consumer confusion, they differ in their legal requirements and scope.',
+        ],
+      },
+      {
+        heading: 'Trademark Infringement',
+        paragraphs: [
+          'Trademark infringement occurs when a registered trademark is used without authorization in a manner likely to cause confusion among consumers. The Trade Marks Act, 1999 grants exclusive rights to the registered proprietor and enables legal action against unauthorized use.',
+        ],
+      },
+      {
+        heading: 'Passing Off',
+        paragraphs: [
+          'Passing off is a common law remedy available even to owners of unregistered trademarks. The plaintiff must establish goodwill, misrepresentation by the defendant, and damage or likelihood of damage to reputation or business.',
+        ],
+      },
+      {
+        heading: 'Key Differences',
+        paragraphs: [
+          'Infringement requires a registered trademark, whereas passing off can protect unregistered marks. In infringement, registration itself provides statutory rights. In passing off, the plaintiff must prove goodwill and reputation in the market. Both actions ultimately seek to prevent consumer deception and protect commercial identity.',
+        ],
+      },
+      {
+        heading: 'Legal Remedies',
+        paragraphs: [
+          'Indian courts may grant temporary and permanent injunctions, damages or accounts of profits, delivery-up and destruction of infringing goods, and other appropriate relief depending on the facts of the case.',
+        ],
+      },
+      {
+        heading: 'Important Case Laws',
+        paragraphs: [
+          'Important judicial decisions include Cadila Health Care Ltd. v. Cadila Pharmaceuticals Ltd., N.R. Dongre v. Whirlpool Corporation, and Satyam Infoway Ltd. v. Sifynet Solutions Pvt. Ltd., which have significantly shaped trademark jurisprudence in India.',
+        ],
+      },
+      {
+        heading: 'Practical Advice',
+        paragraphs: [
+          'Businesses should conduct a trademark search before filing, register their trademarks at the earliest opportunity, monitor the market for infringement, maintain evidence of use, and take prompt legal action against unauthorized use.',
+        ],
+      },
+      {
+        heading: 'Conclusion',
+        paragraphs: [
+          'Trademark infringement and passing off are essential mechanisms for protecting brand identity in India. Registration provides stronger statutory protection, while passing off safeguards business goodwill even in the absence of registration. A proactive trademark strategy helps businesses preserve their reputation, prevent disputes, and strengthen long-term brand value.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '9',
+    slug: 'copyright-protection-india',
+    title: 'Copyright Protection in India: Why Every Creator Should Secure Their Original Work',
+    excerpt: 'Copyright under the Copyright Act, 1957 protects original creative works from unauthorized use—registration, monitoring, and licensing help creators preserve value in a digital world.',
+    category: 'Copyright',
+    date: '2026-08-02',
+    readTime: '5 min read',
+    image: '/Images/blog-ai-copyright-framework.png',
+    author: 'Mozammil Zafar',
+    sections: [
+      {
+        heading: 'Introduction',
+        paragraphs: [
+          'Copyright is a vital form of intellectual property that protects original literary, artistic, musical, dramatic and other creative works. In the digital era, where content can be copied and distributed instantly, copyright protection plays a crucial role in safeguarding the rights of creators and encouraging innovation.',
+        ],
+      },
+      {
+        heading: 'What is Copyright?',
+        paragraphs: [
+          'Copyright is a legal right granted to the creator of an original work. In India, it is governed by the Copyright Act, 1957. Copyright arises automatically upon creation of an original work, although registration serves as strong evidence of ownership.',
+        ],
+      },
+      {
+        heading: 'Works Protected',
+        paragraphs: [
+          'Books, articles, software, websites, photographs, paintings, films, music, sound recordings, architectural works and other original creative expressions are eligible for copyright protection subject to the Act.',
+        ],
+      },
+      {
+        heading: 'Benefits',
+        paragraphs: [
+          'Copyright provides exclusive rights to reproduce, publish, distribute, adapt, communicate and license the work. It also enables creators to seek legal remedies against unauthorized copying.',
+        ],
+      },
+      {
+        heading: 'Common Infringement',
+        paragraphs: [
+          'Unauthorized copying, piracy, online sharing without permission, software piracy and plagiarism are common forms of copyright infringement.',
+        ],
+      },
+      {
+        heading: 'Best Practices',
+        paragraphs: [
+          'Maintain records of creation, use copyright notices, execute proper licensing agreements, monitor online misuse and consider copyright registration for valuable works.',
+        ],
+      },
+      {
+        heading: 'Conclusion',
+        paragraphs: [
+          'Copyright protection strengthens the creative economy by rewarding originality and protecting creators from unauthorized exploitation. Individuals, businesses and startups should understand their copyright rights to preserve the value of their creative assets.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '10',
+    slug: 'choose-strong-trademark-startups',
+    title: 'How to Choose a Strong Trademark for Your Business: A Practical Guide for Startups and Entrepreneurs',
+    excerpt: 'Distinctive, searchable marks reduce rejection and dispute risk—learn what makes a strong trademark, common mistakes, and how registration fits your startup strategy.',
+    category: 'Trademark',
+    date: '2026-08-02',
+    readTime: '6 min read',
+    image: '/Images/blog-strong-brand-name.png',
+    author: 'Mozammil Zafar',
+    keywordsHeading: 'SEO Keywords',
+    keywords: [
+      'Strong Trademark',
+      'Trademark Registration India',
+      'Brand Protection',
+      'Startup Trademark',
+      'Intellectual Property',
+      'Trademark Search',
+    ],
+    sections: [
+      {
+        heading: 'Introduction',
+        paragraphs: [
+          'Choosing the right trademark is one of the most important branding decisions for any business. A strong trademark not only distinguishes your products or services from competitors but also becomes a valuable intellectual property asset. Selecting a legally protectable mark at the beginning can save significant time, cost, and litigation in the future.',
+        ],
+      },
+      {
+        heading: 'What Makes a Strong Trademark?',
+        paragraphs: [
+          'A strong trademark is distinctive, memorable, unique, easy to pronounce, and capable of identifying a single commercial source. Invented and arbitrary words generally receive the highest degree of legal protection.',
+        ],
+      },
+      {
+        heading: 'Types of Trademarks',
+        paragraphs: [
+          'Fanciful marks (invented words), arbitrary marks, suggestive marks, descriptive marks, and generic terms. Fanciful and arbitrary marks are the strongest, while generic names cannot be registered as trademarks.',
+        ],
+      },
+      {
+        heading: 'Mistakes to Avoid',
+        paragraphs: [
+          'Avoid descriptive names, copying famous brands, selecting generic words, ignoring trademark searches, and filing in the wrong trademark class.',
+        ],
+      },
+      {
+        heading: 'Importance of Trademark Search',
+        paragraphs: [
+          'Before adopting any brand name, conduct a comprehensive trademark search to identify identical or deceptively similar marks. This reduces the possibility of objections and infringement disputes.',
+        ],
+      },
+      {
+        heading: 'Registration Process',
+        paragraphs: [
+          'Identify the correct class, conduct a search, file the application, respond to examination objections if any, publish in the Trademark Journal, and obtain registration after completion of legal formalities.',
+        ],
+      },
+      {
+        heading: 'Practical Tips',
+        paragraphs: [
+          'Create a unique brand name, secure matching domain names, maintain consistent use, monitor the market, and renew the trademark on time.',
+        ],
+      },
+      {
+        heading: 'Conclusion',
+        paragraphs: [
+          'A carefully selected trademark strengthens brand identity, builds customer trust, and provides long-term legal protection. Investing time in choosing a distinctive trademark is a strategic decision that contributes to sustainable business growth.',
+        ],
+      },
+    ],
+  },
 ]
 
 export function getBlogBySlug(slug) {

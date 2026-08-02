@@ -56,11 +56,37 @@ export default function BlogDetailPage() {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <div className="prose-custom mt-10 space-y-6 text-lg leading-relaxed text-muted">
-              {post.body.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+            <div className="prose-custom mt-10 space-y-8 text-lg leading-relaxed text-muted">
+              {post.sections?.length
+                ? post.sections.map((section, index) => (
+                    <section key={index}>
+                      {section.heading ? (
+                        <h2 className="text-display mb-4 text-xl font-semibold text-navy md:text-2xl">{section.heading}</h2>
+                      ) : null}
+                      <div className="space-y-4">
+                        {section.paragraphs.map((paragraph, pIndex) => (
+                          <p key={pIndex}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </section>
+                  ))
+                : post.body?.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
             </div>
+
+            {post.keywords?.length ? (
+              <div className="mt-10">
+                <h2 className="text-display mb-4 text-xl font-semibold text-navy md:text-2xl">{post.keywordsHeading ?? 'Keywords'}</h2>
+                <p className="text-lg leading-relaxed text-muted">{post.keywords.join(', ')}.</p>
+              </div>
+            ) : null}
+
+            {post.author ? (
+              <p className="mt-10 text-right text-base font-medium text-navy md:text-lg">
+                By — {post.author}
+              </p>
+            ) : null}
           </FadeIn>
 
           <FadeIn delay={0.2} className="mt-12 border-t border-border pt-10">
