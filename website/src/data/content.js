@@ -7,7 +7,7 @@ export const statistics = [
 export const teamMembers = [
   { id: '1', name: 'Mohammad Awais', role: 'Founder and Managing Director', image: '/Images/team/awais.jpeg', expertise: ['Trademark Attorney', 'IP Consultant'] },
   { id: '2', name: 'Gulafhan Afrin', role: 'Associate Councel IP', image: '/Images/team/gulafshan.jpeg', expertise: ['Trademark Prosecution'] },
-  // { id: '3', name: 'Priya Sharma', role: 'Partner — Trademarks', bio: 'Recognized trademark counsel with expertise in brand enforcement and licensing.', expertise: ['Trademark Registration', 'Enforcement', 'Brand Licensing'] },
+  { id: '3', name: 'Pradeep Dwivedi', role: 'Senior Associate IP', image: '/Images/team/pradeep.jpeg', expertise: ['IP prosecution'] },
   // { id: '4', name: 'James Whitfield', role: 'Partner — Litigation', bio: 'Trial attorney with extensive IP litigation experience before federal courts.', expertise: ['IP Litigation', 'Injunctions', 'Appeals'] },
   // { id: '5', name: 'Amara Osei', role: 'Counsel — Copyright', bio: 'Digital media and entertainment copyright specialist.', expertise: ['Copyright Registration', 'DMCA', 'Content Licensing'] },
   // { id: '6', name: 'Lucas Chen', role: 'Associate — Design & GI', bio: 'Industrial design and geographical indication registration expert.', expertise: ['Design Registration', 'Geographical Indication', 'Hague System'] },
