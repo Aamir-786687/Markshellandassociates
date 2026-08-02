@@ -95,24 +95,27 @@ export function TextReveal({ text, className, delay = 0 }) {
   )
 }
 
-export function ImageReveal({ src, alt, className }) {
+export function ImageReveal({ src, alt, className, priority = false }) {
   return (
     <motion.div
       className={cn('relative overflow-hidden', className)}
-      initial={{ clipPath: 'inset(100% 0 0 0)' }}
-      whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
+      initial={priority ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
+      whileInView={priority ? undefined : { clipPath: 'inset(0% 0 0 0)' }}
+      animate={priority ? { clipPath: 'inset(0% 0 0 0)' } : undefined}
       viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: priority ? 0.6 : 1, ease: [0.22, 1, 0.36, 1] }}
     >
       <motion.img
         src={src}
         alt={alt}
-        loading="lazy"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : undefined}
         className="h-full w-full object-cover"
-        initial={{ scale: 1.15 }}
-        whileInView={{ scale: 1 }}
+        initial={priority ? { scale: 1 } : { scale: 1.15 }}
+        whileInView={priority ? undefined : { scale: 1 }}
+        animate={priority ? { scale: 1 } : undefined}
         viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: priority ? 0.6 : 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
     </motion.div>
   )

@@ -15,6 +15,7 @@ const BlogDetailPage = lazy(() => import('@/pages/BlogDetailPage'))
 const CareerPage = lazy(() => import('@/pages/CareerPage'))
 const FAQsPage = lazy(() => import('@/pages/FAQsPage'))
 const ContactPage = lazy(() => import('@/pages/ContactPage'))
+const LegalDocumentPage = lazy(() => import('@/pages/LegalDocumentPage'))
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 1000 * 60 * 5, refetchOnWindowFocus: false } },
@@ -46,6 +47,9 @@ export default function App() {
                 <Route path="career" element={<Suspense fallback={<PageLoader />}><CareerPage /></Suspense>} />
                 <Route path="faqs" element={<Suspense fallback={<PageLoader />}><FAQsPage /></Suspense>} />
                 <Route path="contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
+                <Route path="privacy-policy" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
+                <Route path="terms-of-service" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
+                <Route path="legal-disclaimer" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
               </Route>
             </Routes>
           </AnimatePresence>
