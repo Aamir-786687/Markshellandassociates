@@ -34,32 +34,32 @@ export default function HomePage() {
       />
 
       {/* Hero */}
-      <section className="relative min-h-screen overflow-hidden pt-36 pb-16 md:pt-40 md:pb-24" aria-labelledby="hero-heading">
-        <FloatingShape className="top-32 -right-20 h-96 w-96" />
-        <FloatingShape className="bottom-20 -left-32 h-64 w-64" />
+      <section className="relative overflow-hidden pt-28 pb-6 md:pt-32 md:pb-10 lg:pt-40 lg:pb-16" aria-labelledby="hero-heading">
+        <FloatingShape className="pointer-events-none hidden lg:block top-32 -right-20 h-96 w-96" />
+        <FloatingShape className="pointer-events-none hidden lg:block bottom-20 -left-32 h-64 w-64" />
 
-        <div className="container-custom grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="container-custom grid items-center gap-8 md:grid-cols-2 lg:gap-16">
           <div>
             <FadeIn>
               <p className="section-eyebrow tracking-[0.2em]">Intellectual Property Law</p>
             </FadeIn>
-            <h1 id="hero-heading" className="text-display mt-6 text-5xl leading-[1.08] font-semibold text-navy md:text-6xl lg:text-7xl">
+            <h1 id="hero-heading" className="text-display mt-4 text-4xl leading-[1.08] font-semibold text-navy sm:text-5xl md:mt-6 md:text-6xl lg:text-7xl">
               <TextReveal text="ONE FIRM EVERY IP SOLUTION" />
             </h1>
             <FadeIn delay={0.3}>
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
+              <p className="mt-4 max-w-lg text-base leading-relaxed text-muted md:mt-6 md:text-lg">
                 We counsel visionary brands, inventors, and creators on trademarks, patents, copyright, and strategic IP enforcement — with clarity, discretion, and uncompromising excellence.
               </p>
             </FadeIn>
             <FadeIn delay={0.4}>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 md:mt-10">
                 <Button href="/contact">Schedule Consultation</Button>
                 <Button href="/services" variant="outline">Explore Services</Button>
               </div>
             </FadeIn>
           </div>
 
-          <FadeIn type="fadeRight" delay={0.2}>
+          <FadeIn type="fadeRight" delay={0.2} className="hidden md:block">
             <div className="relative">
               <motion.div
                 className="absolute -inset-4 rounded-3xl bg-navy/[0.03]"
@@ -67,15 +67,20 @@ export default function HomePage() {
                 transition={{ duration: 10, repeat: Infinity }}
                 aria-hidden="true"
               />
-              <ImageReveal src="/Images/hero-main.png" alt="Abstract illustration representing intellectual property protection and innovation" className="relative rounded-3xl shadow-strong" />
+              <ImageReveal
+                src="/Images/hero-main.png"
+                alt="Abstract illustration representing intellectual property protection and innovation"
+                priority
+                className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-strong"
+              />
             </div>
           </FadeIn>
         </div>
       </section>
 
       {/* Trust */}
-      <section className="pt-16 pb-10 border-y border-border" aria-label="Trusted by industry leaders">
-        <p className="container-custom section-eyebrow mb-6 text-center">Trusted by industry leaders</p>
+      <section className="border-y border-border py-6 lg:py-10" aria-label="Trusted by industry leaders">
+        <p className="container-custom section-eyebrow mb-4 text-center md:mb-6">Trusted by industry leaders</p>
         <Marquee images={trustClientLogos} imageSrc={getClientLogoSrc} />
       </section>
 
