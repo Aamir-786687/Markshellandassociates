@@ -24,7 +24,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 pb-16 bg-surface">
         <div className="container-custom grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (
             <BlogCard key={post.id} post={post} />

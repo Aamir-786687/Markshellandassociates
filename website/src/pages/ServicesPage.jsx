@@ -21,7 +21,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 bg-surface">
         <div className="container-custom">
           <StaggerContainer className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
@@ -31,7 +31,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-padding"><div className="container-custom"><FadeIn><CTABanner title="Need Guidance on Your IP Strategy?" description="Our specialists are ready to assess your needs." /></FadeIn></div></section>
+      <section className="pt-16 pb-16"><div className="container-custom"><FadeIn><CTABanner title="Need Guidance on Your IP Strategy?" description="Our specialists are ready to assess your needs." /></FadeIn></div></section>
     </>
   )
 }

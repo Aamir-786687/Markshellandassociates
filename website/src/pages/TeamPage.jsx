@@ -23,7 +23,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 bg-surface">
         <div className="container-custom">
           <StaggerContainer className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((m) => (
@@ -33,7 +33,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="section-padding"><div className="container-custom"><FadeIn><CTABanner title="Join Our Team" description={<>Explore career opportunities at <BrandName ampClassName="text-gold" />.</>} buttonText="View Careers" buttonHref="/career" /></FadeIn></div></section>
+      <section className="pt-16 pb-16"><div className="container-custom"><FadeIn><CTABanner title="Join Our Team" description={<>Explore career opportunities at <BrandName ampClassName="text-gold" />.</>} buttonText="View Careers" buttonHref="/career" /></FadeIn></div></section>
     </>
   )
 }

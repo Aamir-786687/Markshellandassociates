@@ -34,7 +34,7 @@ export default function AboutPage() {
       <section className="pt-16">
         <div className="container-custom max-w-4xl">
           <FadeIn>
-            <h2 className="text-display text-3xl font-semibold text-navy md:text-4xl">What Are We?</h2>            <p className="mt-6 text-lg leading-relaxed text-muted">
+            <h2 className="text-display text-3xl font-semibold text-navy md:text-4xl">Who Are We?</h2>            <p className="mt-6 text-lg leading-relaxed text-muted">
               <BrandName ampClassName="text-gold" /> is a trusted Intellectual Property law firm committed to helping businesses, startups, and creators safeguard what they build. From trademark, copyright, patent, and design registration to enforcement and litigation, we provide comprehensive IPR solutions with unmatched speed, clarity, and precision.
             </p>
             <p className="mt-6 text-lg leading-relaxed text-muted">
