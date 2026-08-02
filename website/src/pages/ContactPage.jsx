@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin } from 'lucide-react'
+import { FIRM_NAME } from '@/data/brand'
 import { SEO } from '@/components/layout/SEO'
 import { FadeIn, ImageReveal } from '@/components/animations/MotionPrimitives'
 import { services } from '@/data/services'
@@ -23,12 +24,12 @@ export default function ContactPage() {
 
   return (
     <>
-      <SEO title="Contact Us" description="Get in touch with Markshell and Associates for a confidential IP consultation." path="/contact" image="/Images/contact-main.png" />
+      <SEO title="Contact Us" description={`Get in touch with ${FIRM_NAME} for a confidential IP consultation.`} path="/contact" image="/Images/contact-main.png" />
 
       <section className="pt-36 pb-16 md:pt-44">
         <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
           <FadeIn type="fadeLeft">
-            <p className="text-xs font-semibold tracking-widest text-muted uppercase">Contact</p>
+            <p className="section-eyebrow">Contact</p>
             <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Get in Touch</h1>
             <p className="mt-6 text-lg text-muted">Schedule a confidential consultation with our intellectual property specialists.</p>
           </FadeIn>
@@ -74,7 +75,7 @@ export default function ContactPage() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-8 rounded-full bg-navy px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-navy-light disabled:opacity-60 min-h-[48px]"
+                className="mt-8 rounded-full bg-navy px-8 py-4 text-sm font-semibold text-gold transition-colors hover:bg-navy-light disabled:opacity-60 min-h-[48px]"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

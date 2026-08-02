@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "sync:client-logos": "node scripts/sync-client-logos.mjs",
+    "predev": "node scripts/sync-client-logos.mjs",
+    "prebuild": "node scripts/sync-client-logos.mjs",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview"

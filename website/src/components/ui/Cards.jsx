@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { TextWithBrandName } from '@/components/BrandName'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -22,14 +23,14 @@ export function ServiceCard({ service, className, index = 0 }) {
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
-      <span className="text-xs font-semibold tracking-widest text-muted uppercase">
+      <span className="text-display text-xs font-semibold tracking-widest text-gold">
         {String(index + 1).padStart(2, '0')}
       </span>
       <h3 className="text-display mt-2 text-xl font-semibold text-navy md:text-2xl">{service.title}</h3>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{service.shortDescription}</p>
       <Link
         to={`/services/${service.slug}`}
-        className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-navy transition-gap group-hover:gap-2"
+        className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-gold transition-gap group-hover:gap-2 group-hover:text-gold-dark"
       >
         Learn more <ArrowUpRight className="h-4 w-4" />
       </Link>
@@ -37,7 +38,8 @@ export function ServiceCard({ service, className, index = 0 }) {
   )
 }
 
-export function TeamCard({ name, role, expertise, className }) {
+export function TeamCard({ name, role, expertise, image, className }) {
+  const tags = expertise.filter(Boolean)
   return (
     <motion.article
       className={cn('group text-center', className)}
@@ -45,18 +47,27 @@ export function TeamCard({ name, role, expertise, className }) {
       transition={{ duration: 0.3 }}
     >
       <div className="relative mx-auto mb-6 aspect-[3/4] max-w-[280px] overflow-hidden rounded-2xl bg-surface">
-        <div className="flex h-full items-center justify-center">
-          <svg viewBox="0 0 100 120" className="h-2/3 w-2/3 text-navy/10" aria-hidden="true">
-            <circle cx="50" cy="35" r="20" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            <path d="M20 110c0-20 13-35 30-35s30 15 30 35" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          </svg>
-        </div>
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center">
+            <svg viewBox="0 0 100 120" className="h-2/3 w-2/3 text-navy/10" aria-hidden="true">
+              <circle cx="50" cy="35" r="20" stroke="currentColor" strokeWidth="1.5" fill="none" />
+              <path d="M20 110c0-20 13-35 30-35s30 15 30 35" stroke="currentColor" strokeWidth="1.5" fill="none" />
+            </svg>
+          </div>
+        )}
         <div className="absolute inset-0 bg-navy/0 transition-colors duration-300 group-hover:bg-navy/5" />
       </div>
       <h3 className="text-display text-xl font-semibold text-navy">{name}</h3>
       <p className="mt-1 text-sm text-muted">{role}</p>
       <div className="mt-3 flex flex-wrap justify-center gap-2">
-        {expertise.slice(0, 2).map((e) => (
+        {tags.slice(0, 3).map((e) => (
           <span key={e} className="rounded-full bg-surface px-3 py-1 text-xs text-muted">{e}</span>
         ))}
       </div>
@@ -78,13 +89,13 @@ export function BlogCard({ post, className }) {
       </div>
       <div className="p-6 md:p-8">
         <div className="flex items-center gap-3 text-xs text-muted">
-          <span className="font-semibold tracking-wider text-navy uppercase">{post.category}</span>
+          <span className="section-eyebrow normal-case tracking-wider">{post.category}</span>
           <span>·</span>
           <time dateTime={post.date}>{post.date}</time>
           <span>·</span>
           <span>{post.readTime}</span>
         </div>
-        <h3 className="text-display mt-3 text-lg font-semibold text-navy group-hover:text-navy-light">
+        <h3 className="text-display mt-3 text-lg font-semibold text-navy group-hover:text-gold">
           {post.title}
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">{post.excerpt}</p>
@@ -96,7 +107,7 @@ export function BlogCard({ post, className }) {
 export function TestimonialCard({ quote, author, role, company }) {
   return (
     <blockquote className="rounded-2xl bg-surface p-8 md:p-10">
-      <p className="text-display text-xl italic leading-relaxed text-navy md:text-2xl">&ldquo;{quote}&rdquo;</p>
+      <p className="text-display text-xl italic leading-relaxed text-navy md:text-2xl">&ldquo;<TextWithBrandName text={quote} />&rdquo;</p>
       <footer className="mt-8 border-t border-border pt-6">
         <cite className="not-italic font-semibold text-navy">{author}</cite>
         <p className="text-sm text-muted">{role}, {company}</p>
@@ -119,7 +130,7 @@ export function Timeline({ steps }) {
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
           >
-            <div className="relative z-10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-navy bg-white text-display font-bold text-navy">
+            <div className="relative z-10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold bg-white text-display font-bold text-gold">
               {s.step}
             </div>
             <h4 className="font-semibold text-navy">{s.title}</h4>

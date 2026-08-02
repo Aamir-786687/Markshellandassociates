@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { BrandName } from '@/components/BrandName'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
@@ -31,12 +32,14 @@ export function LoadingScreen({ onComplete }) {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <p className="text-display text-3xl font-semibold text-white md:text-4xl">Markshell and Associates</p>
-        <p className="mt-1 text-sm tracking-[0.3em] text-white/50 uppercase">Intellectual Property Law</p>
+        <p className="text-display text-3xl font-semibold text-gold md:text-4xl">
+          <BrandName inheritColor ampClassName="text-gold-light" />
+        </p>
+        <p className="mt-1 text-sm tracking-[0.3em] text-gold/60 uppercase">Intellectual Property Law</p>
       </motion.div>
       <div className="mt-12 h-[1px] w-48 overflow-hidden bg-white/10">
         <motion.div
-          className="h-full bg-white"
+          className="h-full bg-gold"
           style={{ width: `${progress}%` }}
           transition={{ ease: 'linear' }}
         />
@@ -71,7 +74,7 @@ export function AnimatedCounter({ end, suffix = '', label, duration = 2.5 }) {
       viewport={{ once: true }}
       className="text-center"
     >
-      <p className="text-display text-4xl font-bold text-navy md:text-5xl lg:text-6xl">
+      <p className="text-display text-4xl font-bold text-gold md:text-5xl lg:text-6xl">
         {count}{suffix}
       </p>
       <p className="mt-2 text-sm text-muted">{label}</p>
@@ -80,9 +83,9 @@ export function AnimatedCounter({ end, suffix = '', label, duration = 2.5 }) {
 }
 
 const variants = {
-  primary: 'bg-navy text-white hover:bg-navy-light shadow-soft hover:shadow-medium',
-  outline: 'border-2 border-navy text-navy hover:bg-navy hover:text-white',
-  ghost: 'text-navy hover:bg-surface-alt',
+  primary: 'bg-navy text-gold hover:bg-navy-light shadow-soft hover:shadow-medium',
+  outline: 'border-2 border-gold text-gold hover:bg-gold hover:text-navy',
+  ghost: 'text-navy hover:text-gold hover:bg-surface-alt',
 }
 
 const sizes = {
@@ -145,9 +148,9 @@ export function Button({ variant = 'primary', size = 'md', className, children, 
 
 export function AnimatedLink({ href, children, className }) {
   return (
-    <a href={href} className={cn('group relative inline-block text-navy', className)}>
+    <a href={href} className={cn('group relative inline-block text-gold', className)}>
       {children}
-      <span className="absolute -bottom-0.5 left-0 h-[1px] w-0 bg-navy transition-all duration-300 group-hover:w-full" />
+      <span className="absolute -bottom-0.5 left-0 h-[1px] w-0 bg-gold transition-all duration-300 group-hover:w-full" />
     </a>
   )
 }

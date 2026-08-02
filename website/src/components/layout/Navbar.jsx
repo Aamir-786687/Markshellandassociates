@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { BrandName, brandAriaLabel } from '@/components/BrandName'
 import { Button } from '@/components/ui/Button'
 import { services } from '@/data/services'
 
@@ -42,10 +43,10 @@ export function Navbar() {
       )}
     >
       <div className="container-custom flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3" aria-label="Markshell and Associates home">
+        <Link to="/" className="flex items-center gap-3" aria-label={`${brandAriaLabel()} home`}>
           <img src="/logo.png" alt="" className="h-14 w-14 shrink-0 rounded-full object-cover shadow-md md:h-16 md:w-16" width={64} height={64} />
           <span className="text-display hidden text-lg leading-tight font-bold text-navy sm:block md:text-xl">
-            Markshell and Associates
+            <BrandName inheritColor ampClassName="text-gold" />
           </span>
         </Link>
 
@@ -62,7 +63,7 @@ export function Navbar() {
                   to={link.href}
                   className={cn(
                     'flex items-center gap-1 text-sm font-medium transition-colors',
-                    location.pathname.startsWith('/services') ? 'text-navy' : 'text-muted hover:text-navy',
+                    location.pathname.startsWith('/services') ? 'text-navy' : 'text-muted hover:text-gold',
                   )}
                 >
                   {link.label}
@@ -94,7 +95,7 @@ export function Navbar() {
                           </Link>
                         ))}
                       </div>
-                      <Link to="/services" className="mt-4 block text-center text-sm font-semibold text-navy hover:underline">
+                      <Link to="/services" className="mt-4 block text-center text-sm font-semibold text-gold hover:text-gold-dark hover:underline">
                         View All Services →
                       </Link>
                     </motion.div>
@@ -107,12 +108,12 @@ export function Navbar() {
                 to={link.href}
                 className={cn(
                   'relative text-sm font-medium transition-colors',
-                  location.pathname === link.href ? 'text-navy' : 'text-muted hover:text-navy',
+                  location.pathname === link.href ? 'text-navy' : 'text-muted hover:text-gold',
                 )}
               >
                 {link.label}
                 {location.pathname === link.href && (
-                  <motion.span layoutId="nav-underline" className="absolute -bottom-1 left-0 h-[1px] w-full bg-navy" />
+                  <motion.span layoutId="nav-underline" className="absolute -bottom-1 left-0 h-[1px] w-full bg-gold" />
                 )}
               </Link>
             ),

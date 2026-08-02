@@ -7,8 +7,8 @@ const PHONE = '+91 9211978238'
 const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/people/Mark-Shell/pfbid082c8AAaqb5pVJ8vvRLAmJqcK2VqQzqhgayu8WmussZoWkaeHo6MNCFXzXcyRaRGml/?sk=about', Icon: FacebookIcon },
   { label: 'Instagram', href: 'https://www.instagram.com/markshellandassociates/', Icon: InstagramIcon },
-  { label: 'X (Twitter)', href: 'https://x.com/MarkshellA65927', Icon: XIcon },
-  { label: 'LinkedIn', href: '#', Icon: LinkedInIcon },
+  { label: 'X (Twitter)', href: '#', Icon: XIcon },
+  { label: 'LinkedIn', href: 'https://in.linkedin.com/in/markshell-and-associates-b69941421', Icon: LinkedInIcon },
 ]
 
 function FacebookIcon({ className }) {
@@ -49,14 +49,14 @@ export function TopBar() {
   return (
     <div className="border-b border-white/10 bg-navy">
       <div className="container-custom flex h-9 items-center justify-between gap-4 md:h-10">
-        <p className="text-display hidden truncate text-sm font-semibold text-white sm:block md:text-[15px]">
+        <p className="text-display hidden truncate text-sm font-semibold text-gold sm:block md:text-[15px]">
           Protecting Innovation. Empowering Growth.
         </p>
 
-        <div className="ml-auto flex items-center gap-3 text-xs text-white sm:gap-4 md:gap-5 md:text-sm">
+        <div className="ml-auto flex items-center gap-3 text-xs text-gold/90 sm:gap-4 md:gap-5 md:text-sm">
           <a
             href={`mailto:${EMAIL}`}
-            className="flex items-center gap-1.5 transition-colors hover:text-white/80"
+            className="flex items-center gap-1.5 transition-colors hover:text-gold-light"
             aria-label={`Email ${EMAIL}`}
           >
             <Mail className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
@@ -65,7 +65,7 @@ export function TopBar() {
 
           <a
             href={`tel:${PHONE.replace(/\s/g, '')}`}
-            className="flex items-center gap-1.5 transition-colors hover:text-white/80"
+            className="flex items-center gap-1.5 transition-colors hover:text-gold-light"
             aria-label={`Call ${PHONE}`}
           >
             <Phone className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
@@ -81,7 +81,7 @@ export function TopBar() {
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 aria-label={label}
                 className={cn(
-                  'flex h-6 w-6 items-center justify-center rounded-sm text-white transition-opacity hover:opacity-80 sm:h-7 sm:w-7',
+                  'flex h-6 w-6 items-center justify-center rounded-sm text-gold transition-opacity hover:opacity-80 sm:h-7 sm:w-7',
                 )}
               >
                 <Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />

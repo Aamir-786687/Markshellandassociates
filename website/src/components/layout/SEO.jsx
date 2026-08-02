@@ -1,16 +1,18 @@
 import { Helmet } from 'react-helmet-async'
 
+import { FIRM_NAME } from '@/data/brand'
+
 const SITE_URL = 'https://www.markshelland.com'
 const DEFAULT_IMAGE = '/Images/hero-main.png'
 
 export function SEO({ title, description, path = '', image = DEFAULT_IMAGE, type = 'website' }) {
   const url = `${SITE_URL}${path}`
-  const fullTitle = `${title} | Markshell and Associates`
+  const fullTitle = `${title} | ${FIRM_NAME}`
 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
-    name: 'Markshell and Associates',
+    name: FIRM_NAME,
     description: 'Premier intellectual property law firm specializing in trademarks, patents, copyright, and IP enforcement.',
     url: SITE_URL,
     areaServed: 'Worldwide',
@@ -28,7 +30,7 @@ export function SEO({ title, description, path = '', image = DEFAULT_IMAGE, type
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
       <meta property="og:image" content={`${SITE_URL}${image}`} />
-      <meta property="og:site_name" content="Markshell and Associates" />
+      <meta property="og:site_name" content={FIRM_NAME} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
