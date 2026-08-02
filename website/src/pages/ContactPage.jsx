@@ -39,7 +39,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 pb-16 bg-surface">
         <div className="container-custom grid gap-16 lg:grid-cols-5">
           <FadeIn type="fadeLeft" className="lg:col-span-3">
             <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-border bg-white p-8 md:p-10" noValidate>

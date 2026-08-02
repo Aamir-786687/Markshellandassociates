@@ -48,7 +48,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 bg-surface">
         <div className="container-custom max-w-4xl">
           <FadeIn>
             <h2 className="text-display text-3xl font-semibold text-navy">Overview</h2>
@@ -57,7 +57,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="section-padding">
+      <section className="pt-16">
         <div className="container-custom">
           <FadeIn>
             <h2 className="text-display text-3xl font-semibold text-navy">Key Benefits</h2>
@@ -75,7 +75,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 bg-surface">
         <div className="container-custom">
           <FadeIn className="text-center">
             <h2 className="text-display text-3xl font-semibold text-navy">Our Process</h2>
@@ -86,7 +86,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="section-padding">
+      <section className="pt-16">
         <div className="container-custom max-w-3xl">
           <FadeIn>
             <h2 className="text-display text-3xl font-semibold text-navy">Frequently Asked Questions</h2>
@@ -98,7 +98,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {related.length > 0 && (
-        <section className="section-padding bg-surface">
+        <section className="pt-16 bg-surface">
           <div className="container-custom">
             <FadeIn>
               <h2 className="text-display text-3xl font-semibold text-navy">Related Services</h2>
@@ -112,7 +112,7 @@ export default function ServiceDetailPage() {
         </section>
       )}
 
-      <section className="section-padding">
+      <section className="pt-16 pb-16">
         <div className="container-custom">
           <CTABanner
             title={`Ready to Get Started with ${service.title}?`}

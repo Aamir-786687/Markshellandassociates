@@ -31,7 +31,7 @@ export default function FAQsPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 bg-surface">
         <div className="container-custom max-w-3xl">
           <FadeIn><h2 className="text-display text-2xl font-semibold text-navy">General Questions</h2></FadeIn>
           <FadeIn delay={0.1} className="mt-6"><Accordion items={homeFaqs} /></FadeIn>
@@ -40,7 +40,7 @@ export default function FAQsPage() {
         </div>
       </section>
 
-      <section className="section-padding"><div className="container-custom"><FadeIn><CTABanner title="Still Have Questions?" description="Our team is ready to provide personalized answers." buttonText="Contact Us" /></FadeIn></div></section>
+      <section className="pt-16 pb-16"><div className="container-custom"><FadeIn><CTABanner title="Still Have Questions?" description="Our team is ready to provide personalized answers." buttonText="Contact Us" /></FadeIn></div></section>
     </>
   )
 }

@@ -31,7 +31,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-surface">
+      <section className="pt-16 bg-surface">
         <div className="container-custom grid gap-16 lg:grid-cols-2">
           <FadeIn type="fadeLeft">
             <h2 className="text-display text-3xl font-semibold text-navy">Our Culture</h2>
@@ -56,7 +56,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="section-padding"><div className="container-custom"><FadeIn><CTABanner title="Don't See Your Role?" description="Send us your resume — we're always looking for exceptional IP talent." buttonText="Get in Touch" /></FadeIn></div></section>
+      <section className="pt-16 pb-16"><div className="container-custom"><FadeIn><CTABanner title="Don't See Your Role?" description="Send us your resume — we're always looking for exceptional IP talent." buttonText="Get in Touch" /></FadeIn></div></section>
     </>
   )
 }
