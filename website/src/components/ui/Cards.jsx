@@ -38,7 +38,8 @@ export function ServiceCard({ service, className, index = 0 }) {
   )
 }
 
-export function TeamCard({ name, role, expertise, className }) {
+export function TeamCard({ name, role, expertise, image, className }) {
+  const tags = expertise.filter(Boolean)
   return (
     <motion.article
       className={cn('group text-center', className)}
@@ -46,18 +47,27 @@ export function TeamCard({ name, role, expertise, className }) {
       transition={{ duration: 0.3 }}
     >
       <div className="relative mx-auto mb-6 aspect-[3/4] max-w-[280px] overflow-hidden rounded-2xl bg-surface">
-        <div className="flex h-full items-center justify-center">
-          <svg viewBox="0 0 100 120" className="h-2/3 w-2/3 text-navy/10" aria-hidden="true">
-            <circle cx="50" cy="35" r="20" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            <path d="M20 110c0-20 13-35 30-35s30 15 30 35" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          </svg>
-        </div>
+        {image ? (
+          <img
+            src={image}
+            alt={name}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center">
+            <svg viewBox="0 0 100 120" className="h-2/3 w-2/3 text-navy/10" aria-hidden="true">
+              <circle cx="50" cy="35" r="20" stroke="currentColor" strokeWidth="1.5" fill="none" />
+              <path d="M20 110c0-20 13-35 30-35s30 15 30 35" stroke="currentColor" strokeWidth="1.5" fill="none" />
+            </svg>
+          </div>
+        )}
         <div className="absolute inset-0 bg-navy/0 transition-colors duration-300 group-hover:bg-navy/5" />
       </div>
       <h3 className="text-display text-xl font-semibold text-navy">{name}</h3>
       <p className="mt-1 text-sm text-muted">{role}</p>
       <div className="mt-3 flex flex-wrap justify-center gap-2">
-        {expertise.slice(0, 2).map((e) => (
+        {tags.slice(0, 3).map((e) => (
           <span key={e} className="rounded-full bg-surface px-3 py-1 text-xs text-muted">{e}</span>
         ))}
       </div>

@@ -1,5 +1,5 @@
 import { BrandName } from '@/components/BrandName'
-import { Mail, Phone, Share2 } from 'lucide-react'
+import { Mail, Phone, Share2, MapPin } from 'lucide-react'
 import { services } from '@/data/services'
 import { Link } from 'react-router-dom'
 
@@ -56,9 +56,18 @@ export function Footer() {
           <div>
             <h3 className="section-eyebrow text-gold">Contact</h3>
             <ul className="mt-6 space-y-3 text-sm">
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +1 (800) 555-1234</li>
-              <li><a href="mailto:contact@markshelland.com" className="hover:text-gold-light">contact@markshelland.com</a></li>
-              <li>350 Fifth Avenue, Suite 4200<br />New York, NY 10118</li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <a href="tel:+919211978238" className="hover:text-gold-light">+91 9211978238</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <a href="mailto:markshellassociates@gmail.com" className="break-all hover:text-gold-light">markshellassociates@gmail.com</a>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <span>N-45, Office No-1, Abu Fazal Enclave Part-1, Jamia Nagar Okhla New Delhi -110025, India</span>
+              </li>
             </ul>
           </div>
         </div>

@@ -8,7 +8,7 @@ const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/people/Mark-Shell/pfbid082c8AAaqb5pVJ8vvRLAmJqcK2VqQzqhgayu8WmussZoWkaeHo6MNCFXzXcyRaRGml/?sk=about', Icon: FacebookIcon },
   { label: 'Instagram', href: 'https://www.instagram.com/markshellandassociates/', Icon: InstagramIcon },
   { label: 'X (Twitter)', href: '#', Icon: XIcon },
-  { label: 'LinkedIn', href: '#', Icon: LinkedInIcon },
+  { label: 'LinkedIn', href: 'https://in.linkedin.com/in/markshell-and-associates-b69941421', Icon: LinkedInIcon },
 ]
 
 function FacebookIcon({ className }) {

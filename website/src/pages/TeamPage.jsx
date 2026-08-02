@@ -27,7 +27,7 @@ export default function TeamPage() {
         <div className="container-custom">
           <StaggerContainer className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((m) => (
-              <StaggerItem key={m.id}><TeamCard name={m.name} role={m.role} expertise={m.expertise} /></StaggerItem>
+              <StaggerItem key={m.id}><TeamCard name={m.name} role={m.role} expertise={m.expertise} image={m.image} /></StaggerItem>
             ))}
           </StaggerContainer>
         </div>

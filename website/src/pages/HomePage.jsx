@@ -44,7 +44,7 @@ export default function HomePage() {
               <p className="section-eyebrow tracking-[0.2em]">Intellectual Property Law</p>
             </FadeIn>
             <h1 id="hero-heading" className="text-display mt-6 text-5xl leading-[1.08] font-semibold text-navy md:text-6xl lg:text-7xl">
-              <TextReveal text="Protecting Innovation With Precision" />
+              <TextReveal text="ONE FIRM EVERY IP SOLUTION" />
             </h1>
             <FadeIn delay={0.3}>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
@@ -74,13 +74,13 @@ export default function HomePage() {
       </section>
 
       {/* Trust */}
-      <section className="border-y border-border py-10" aria-label="Trusted by industry leaders">
+      <section className="pt-16 pb-10 border-y border-border" aria-label="Trusted by industry leaders">
         <p className="container-custom section-eyebrow mb-6 text-center">Trusted by industry leaders</p>
         <Marquee images={trustClientLogos} imageSrc={getClientLogoSrc} />
       </section>
 
       {/* Services */}
-      <section className="section-padding bg-surface" aria-labelledby="practice-heading">
+      <section className="pt-16 bg-surface" aria-labelledby="practice-heading">
         <div className="container-custom">
           <FadeIn className="max-w-2xl">
             <p className="section-eyebrow">Our Services</p>
@@ -118,7 +118,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding" aria-labelledby="why-heading">
+      <section className="pt-16" aria-labelledby="why-heading">
         <div className="container-custom grid items-center gap-16 lg:grid-cols-2">
           <FadeIn type="fadeLeft">
             <p className="section-eyebrow">Why Choose Us</p>
@@ -135,7 +135,7 @@ export default function HomePage() {
               ))}
             </ul>
           </FadeIn>
-          <StaggerContainer className="grid grid-cols-2 gap-8">
+          <StaggerContainer className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             {statistics.map((stat) => (
               <StaggerItem key={stat.label}>
                 <AnimatedCounter end={stat.value} suffix={stat.suffix} label={stat.label} />
@@ -146,7 +146,7 @@ export default function HomePage() {
       </section>
 
       {/* Process */}
-      <section className="section-padding bg-surface" aria-labelledby="process-heading">
+      <section className="pt-16 bg-surface" aria-labelledby="process-heading">
         <div className="container-custom">
           <FadeIn className="text-center">
             <p className="section-eyebrow">Our Process</p>
@@ -159,7 +159,7 @@ export default function HomePage() {
       </section>
 
       {/* Industry Expertise */}
-      <section className="section-padding" aria-labelledby="industry-heading">
+      <section className="pt-16" aria-labelledby="industry-heading">
         <div className="container-custom">
           <FadeIn className="max-w-2xl">
             <p className="section-eyebrow">Industry Expertise</p>
@@ -179,7 +179,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding bg-surface" aria-labelledby="testimonials-heading">
+      <section className="pt-16 bg-surface" aria-labelledby="testimonials-heading">
         <div className="container-custom">
           <FadeIn>
             <p className="section-eyebrow">Client Testimonials</p>
@@ -204,7 +204,7 @@ export default function HomePage() {
       </section>
 
       {/* Team Preview */}
-      <section className="section-padding" aria-labelledby="team-heading">
+      <section className="pt-16" aria-labelledby="team-heading">
         <div className="container-custom">
           <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -218,7 +218,7 @@ export default function HomePage() {
           <StaggerContainer className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {teamMembers.slice(0, 4).map((member) => (
               <StaggerItem key={member.id}>
-                <TeamCard name={member.name} role={member.role} expertise={member.expertise} />
+                <TeamCard name={member.name} role={member.role} expertise={member.expertise} image={member.image} />
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -226,7 +226,7 @@ export default function HomePage() {
       </section>
 
       {/* Blog Preview */}
-      <section className="section-padding bg-surface" aria-labelledby="blog-heading">
+      <section className="pt-16 bg-surface" aria-labelledby="blog-heading">
         <div className="container-custom">
           <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -244,7 +244,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Preview */}
-      <section className="section-padding" aria-labelledby="faq-heading">
+      <section className="pt-16" aria-labelledby="faq-heading">
         <div className="container-custom max-w-3xl">
           <FadeIn className="text-center">
             <p className="section-eyebrow">FAQs</p>
@@ -260,7 +260,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-surface">
+      <section className="pt-16 pb-16 bg-surface">
         <div className="container-custom">
           <FadeIn>
             <CTABanner
