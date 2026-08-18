@@ -48,7 +48,7 @@ function LinkedInIcon({ className }) {
 export function TopBar() {
   return (
     <div className="border-b border-white/10 bg-navy">
-      <div className="container-custom flex h-9 items-center justify-between gap-4 md:h-10">
+      <div className="container-custom flex h-8 items-center justify-between gap-4 md:h-10">
         <p className="text-display hidden truncate text-sm font-semibold text-gold sm:block md:text-[15px]">
           Protecting Innovation. Empowering Growth.
         </p>

@@ -28,7 +28,7 @@ export default function ServiceDetailPage() {
         image={service.image}
       />
 
-      <section className="pt-36 pb-16 md:pt-44 md:pb-24">
+      <section className="page-hero md:pb-10 lg:pb-16">
         <div className="container-custom">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
@@ -36,23 +36,23 @@ export default function ServiceDetailPage() {
             { label: service.title },
           ]} />
 
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="page-hero-grid !px-0 lg:mt-4">
             <FadeIn type="fadeLeft">
               <p className="section-eyebrow">Service</p>
-              <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl lg:text-6xl">{service.title}</h1>
-              <p className="mt-6 text-lg leading-relaxed text-muted">{service.shortDescription}</p>
-              <div className="mt-8">
+              <h1 className="text-display mt-3 text-3xl font-semibold text-navy sm:text-4xl md:mt-4 md:text-5xl lg:text-6xl">{service.title}</h1>
+              <p className="mt-4 text-base leading-relaxed text-muted md:mt-6 md:text-lg">{service.shortDescription}</p>
+              <div className="mt-6 md:mt-8">
                 <Button href="/contact">Request Consultation</Button>
               </div>
             </FadeIn>
-            <FadeIn type="fadeRight">
-              <ImageReveal src={service.image} alt={`Illustration for ${service.title}`} className="rounded-3xl shadow-medium" />
+            <FadeIn type="fadeRight" className="hidden lg:block">
+              <ImageReveal src={service.image} alt={`Illustration for ${service.title}`} className="max-h-[min(420px,50vh)] rounded-3xl shadow-medium" />
             </FadeIn>
           </div>
         </div>
       </section>
 
-      <section className="pt-16 bg-surface">
+      <section className="page-section bg-surface">
         <div className="container-custom max-w-4xl">
           <FadeIn>
             <h2 className="text-display text-3xl font-semibold text-navy">Overview</h2>
@@ -61,7 +61,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="pt-16">
+      <section className="page-section">
         <div className="container-custom">
           <FadeIn>
             <h2 className="text-display text-3xl font-semibold text-navy">Key Benefits</h2>
@@ -79,7 +79,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="pt-16 bg-surface">
+      <section className="page-section bg-surface">
         <div className="container-custom">
           <FadeIn className="text-center">
             <h2 className="text-display text-3xl font-semibold text-navy">Our Process</h2>
@@ -90,7 +90,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="pt-16">
+      <section className="page-section">
         <div className="container-custom max-w-3xl">
           <FadeIn>
             <h2 className="text-display text-3xl font-semibold text-navy">Frequently Asked Questions</h2>
@@ -102,7 +102,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {related.length > 0 && (
-        <section className="pt-16 bg-surface">
+        <section className="page-section bg-surface">
           <div className="container-custom">
             <FadeIn>
               <h2 className="text-display text-3xl font-semibold text-navy">Related Services</h2>
@@ -116,7 +116,7 @@ export default function ServiceDetailPage() {
         </section>
       )}
 
-      <section className="pt-16 pb-16">
+      <section className="page-section-end">
         <div className="container-custom">
           <CTABanner
             title={`Ready to Get Started with ${service.title}?`}

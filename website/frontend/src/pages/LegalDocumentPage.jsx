@@ -17,7 +17,7 @@ export default function LegalDocumentPage() {
     <>
       <SEO title={doc.title} description={doc.seoDescription} path={`/${doc.slug}`} />
 
-      <section className="pt-36 pb-8 md:pt-44">
+      <section className="page-hero pb-4 md:pb-6 lg:pb-8">
         <div className="container-custom max-w-3xl">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
@@ -34,7 +34,7 @@ export default function LegalDocumentPage() {
         </div>
       </section>
 
-      <section className="pt-16 pb-16">
+      <section className="page-section-end">
         <div className="container-custom max-w-3xl">
           <FadeIn>
             <div className="space-y-10 text-muted">

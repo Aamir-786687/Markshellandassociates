@@ -4,8 +4,9 @@ import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { FIRM_NAME } from '@/data/brand'
 import { SEO } from '@/components/layout/SEO'
+import { PageHero } from '@/components/layout/PageHero'
 import { PageLoader } from '@/components/ui/PageLoader'
-import { FadeIn, ImageReveal } from '@/components/animations/MotionPrimitives'
+import { FadeIn } from '@/components/animations/MotionPrimitives'
 import { useServices } from '@/hooks/useContent'
 import { api } from '@/api/client'
 
@@ -47,21 +48,16 @@ export default function ContactPage() {
     <>
       <SEO title="Contact Us" description={`Get in touch with ${FIRM_NAME} for a confidential IP consultation.`} path="/contact" image="/Images/contact-main.png" />
 
-      <section className="pt-36 pb-16 md:pt-44">
-        <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
-          <FadeIn type="fadeLeft">
-            <p className="section-eyebrow">Contact</p>
-            <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Get in Touch</h1>
-            <p className="mt-6 text-lg text-muted">Schedule a confidential consultation with our intellectual property specialists.</p>
-          </FadeIn>
-          <FadeIn type="fadeRight">
-            <ImageReveal src="/Images/contact-main.png" alt="Contact illustration" className="rounded-3xl shadow-medium" />
-          </FadeIn>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Get in Touch"
+        description="Schedule a confidential consultation with our intellectual property specialists."
+        image="/Images/contact-main.png"
+        imageAlt="Contact illustration"
+      />
 
-      <section className="pt-16 pb-16 bg-surface">
-        <div className="container-custom grid gap-16 lg:grid-cols-5">
+      <section className="page-section-end bg-surface">
+        <div className="container-custom grid gap-10 lg:grid-cols-5 lg:gap-16">
           <FadeIn type="fadeLeft" className="lg:col-span-3">
             <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-border bg-white p-8 md:p-10" noValidate>
               <h2 className="text-display text-2xl font-semibold text-navy">Send a Message</h2>
