@@ -39,7 +39,7 @@ export function ServiceCard({ service, className, index = 0 }) {
 }
 
 export function TeamCard({ name, role, expertise, image, className }) {
-  const tags = expertise.filter(Boolean)
+  const tags = expertise?.filter(Boolean) ?? []
   return (
     <motion.article
       className={cn('group text-center', className)}
@@ -66,11 +66,13 @@ export function TeamCard({ name, role, expertise, image, className }) {
       </div>
       <h3 className="text-display text-xl font-semibold text-navy">{name}</h3>
       <p className="mt-1 text-sm text-muted">{role}</p>
-      <div className="mt-3 flex flex-wrap justify-center gap-2">
-        {tags.slice(0, 3).map((e) => (
-          <span key={e} className="rounded-full bg-surface px-3 py-1 text-xs text-muted">{e}</span>
-        ))}
-      </div>
+      {tags.length > 0 ? (
+        <div className="mt-3 flex flex-wrap justify-center gap-2">
+          {tags.slice(0, 3).map((e) => (
+            <span key={e} className="rounded-full bg-surface px-3 py-1 text-xs text-muted">{e}</span>
+          ))}
+        </div>
+      ) : null}
     </motion.article>
   )
 }
