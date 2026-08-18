@@ -1,9 +1,10 @@
 import { FIRM_NAME } from '@/data/brand'
 import { SEO } from '@/components/layout/SEO'
+import { PageHero } from '@/components/layout/PageHero'
 import { Accordion } from '@/components/ui/Accordion'
 import { CTABanner } from '@/components/ui/Cards'
 import { PageLoader } from '@/components/ui/PageLoader'
-import { FadeIn, ImageReveal } from '@/components/animations/MotionPrimitives'
+import { FadeIn } from '@/components/animations/MotionPrimitives'
 import { useFaqs } from '@/hooks/useContent'
 
 const extraFaqs = [
@@ -23,29 +24,24 @@ export default function FAQsPage() {
     <>
       <SEO title="FAQs" description={`Frequently asked questions about intellectual property services at ${FIRM_NAME}.`} path="/faqs" image="/Images/faq-main.png" />
 
-      <section className="pt-36 pb-16 md:pt-44">
-        <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
-          <FadeIn type="fadeLeft">
-            <p className="section-eyebrow">FAQs</p>
-            <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Frequently Asked Questions</h1>
-            <p className="mt-6 text-lg text-muted">Find answers to common questions about our IP services, process, and approach.</p>
-          </FadeIn>
-          <FadeIn type="fadeRight">
-            <ImageReveal src="/Images/faq-main.png" alt="FAQ illustration" className="rounded-3xl shadow-medium" />
-          </FadeIn>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="FAQs"
+        title="Frequently Asked Questions"
+        description="Find answers to common questions about our IP services, process, and approach."
+        image="/Images/faq-main.png"
+        imageAlt="FAQ illustration"
+      />
 
-      <section className="pt-16 bg-surface">
+      <section className="page-section bg-surface">
         <div className="container-custom max-w-3xl">
-          <FadeIn><h2 className="text-display text-2xl font-semibold text-navy">General Questions</h2></FadeIn>
-          <FadeIn delay={0.1} className="mt-6"><Accordion items={homeFaqs} /></FadeIn>
-          <FadeIn delay={0.2} className="mt-12"><h2 className="text-display text-2xl font-semibold text-navy">Working With Us</h2></FadeIn>
-          <FadeIn delay={0.3} className="mt-6"><Accordion items={extraFaqs} /></FadeIn>
+          <FadeIn><h2 className="text-display text-xl font-semibold text-navy md:text-2xl">General Questions</h2></FadeIn>
+          <FadeIn delay={0.1} className="mt-4 md:mt-6"><Accordion items={homeFaqs} /></FadeIn>
+          <FadeIn delay={0.2} className="mt-8 md:mt-12"><h2 className="text-display text-xl font-semibold text-navy md:text-2xl">Working With Us</h2></FadeIn>
+          <FadeIn delay={0.3} className="mt-4 md:mt-6"><Accordion items={extraFaqs} /></FadeIn>
         </div>
       </section>
 
-      <section className="pt-16 pb-16"><div className="container-custom"><FadeIn><CTABanner title="Still Have Questions?" description="Our team is ready to provide personalized answers." buttonText="Contact Us" /></FadeIn></div></section>
+      <section className="page-section-end"><div className="container-custom"><FadeIn><CTABanner title="Still Have Questions?" description="Our team is ready to provide personalized answers." buttonText="Contact Us" /></FadeIn></div></section>
     </>
   )
 }

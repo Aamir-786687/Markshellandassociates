@@ -23,7 +23,7 @@ export default function BlogDetailPage() {
         type="article"
       />
 
-      <article className="pt-36 pb-16 md:pt-44 md:pb-24">
+      <article className="page-hero md:pb-10 lg:pb-16">
         <div className="container-custom max-w-4xl">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
