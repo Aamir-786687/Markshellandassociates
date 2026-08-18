@@ -13,7 +13,6 @@ import { ServiceCard, TeamCard, BlogCard, TestimonialCard, Timeline, CTABanner }
 import { FadeIn, StaggerContainer, StaggerItem, ImageReveal, TextReveal, Marquee, FloatingShape } from '@/components/animations/MotionPrimitives'
 import { AnimatedCounter } from '@/components/ui/Button'
 import { PageLoader } from '@/components/ui/PageLoader'
-import { trustClientLogos, getClientLogoSrc } from '@/data/trustClientLogos'
 import {
   useStatistics,
   useTeam,
@@ -22,6 +21,7 @@ import {
   useIndustries,
   useFaqs,
   useServices,
+  useTrustClientLogos,
 } from '@/hooks/useContent'
 
 const processSteps = [
@@ -40,8 +40,9 @@ export default function HomePage() {
   const { data: industries = [], isLoading: loadingIndustries } = useIndustries()
   const { data: homeFaqs = [], isLoading: loadingFaqs } = useFaqs()
   const { data: services = [], isLoading: loadingServices } = useServices()
+  const { data: clientLogos = [], isLoading: loadingLogos } = useTrustClientLogos()
 
-  const isLoading = loadingStats || loadingTeam || loadingBlog || loadingTestimonials || loadingIndustries || loadingFaqs || loadingServices
+  const isLoading = loadingStats || loadingTeam || loadingBlog || loadingTestimonials || loadingIndustries || loadingFaqs || loadingServices || loadingLogos
 
   if (isLoading) return <PageLoader />
 
@@ -101,7 +102,7 @@ export default function HomePage() {
       {/* Trust */}
       <section className="border-y border-border py-6 lg:py-10" aria-label="Trusted by industry leaders">
         <p className="container-custom section-eyebrow mb-4 text-center md:mb-6">Trusted by industry leaders</p>
-        <Marquee images={trustClientLogos} imageSrc={getClientLogoSrc} />
+        <Marquee images={clientLogos.map((logo) => logo.src)} />
       </section>
 
       {/* Services */}

@@ -10,6 +10,7 @@ import {
   Industry,
   Career,
   HomeFaq,
+  TrustClientLogo,
 } from '../models/index.js'
 import {
   statistics,
@@ -22,6 +23,7 @@ import {
 } from './content.js'
 import { services } from './services.js'
 import { legalDocuments } from './legal.js'
+import { seedTrustClientLogos } from './syncClientLogos.js'
 
 dotenv.config()
 
@@ -38,6 +40,7 @@ async function seed() {
     Industry.deleteMany({}),
     Career.deleteMany({}),
     HomeFaq.deleteMany({}),
+    TrustClientLogo.deleteMany({}),
   ])
 
   await Statistic.insertMany(statistics.map((item, order) => ({ ...item, order })))
@@ -104,6 +107,9 @@ async function seed() {
   await Industry.insertMany(industries.map((item, order) => ({ ...item, order })))
   await Career.insertMany(careers.map((item, order) => ({ ...item, order })))
   await HomeFaq.insertMany(homeFaqs.map((item, order) => ({ ...item, order })))
+
+  const logoCount = await seedTrustClientLogos()
+  console.log(`Seeded ${logoCount} client logos`)
 
   console.log('Database seeded successfully')
   process.exit(0)

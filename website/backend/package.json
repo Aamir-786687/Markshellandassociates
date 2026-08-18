@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch src/index.js",
     "start": "node src/index.js",
-    "seed": "node src/seed/runSeed.js"
+    "seed": "node src/seed/runSeed.js",
+    "sync:client-logos": "node src/seed/syncClientLogos.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

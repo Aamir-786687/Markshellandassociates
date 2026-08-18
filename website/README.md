@@ -65,3 +65,18 @@ In development, Vite proxies `/api` to the backend.
 | GET | `/api/industries` | Industries |
 | GET | `/api/careers` | Career listings |
 | GET | `/api/faqs` | Home page FAQs |
+| GET | `/api/trust-client-logos` | Client logo filenames and image paths |
+| POST | `/api/messages` | Submit contact form message |
+| GET | `/api/messages` | List all contact form submissions |
+
+## Client logos
+
+Logos are read from `frontend/public/Images/clients/` and stored in MongoDB (filename + public URL path).
+
+After adding or removing files in that folder, sync to the database:
+
+```bash
+npm run sync:client-logos
+```
+
+Or re-run the full seed: `npm run seed`

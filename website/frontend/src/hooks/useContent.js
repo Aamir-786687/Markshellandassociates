@@ -56,3 +56,7 @@ export function useCareers() {
 export function useFaqs() {
   return useQuery({ queryKey: ['faqs'], queryFn: api.getFaqs })
 }
+
+export function useTrustClientLogos() {
+  return useQuery({ queryKey: ['trust-client-logos'], queryFn: api.getTrustClientLogos })
+}

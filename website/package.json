@@ -8,6 +8,7 @@
     "dev:backend": "npm run dev --prefix backend",
     "build": "npm run build --prefix frontend",
     "seed": "npm run seed --prefix backend",
+    "sync:client-logos": "npm run sync:client-logos --prefix backend",
     "install:all": "npm install --prefix frontend && npm install --prefix backend"
   },
   "devDependencies": {

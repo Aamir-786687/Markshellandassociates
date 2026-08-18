@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin } from 'lucide-react'
@@ -6,6 +7,7 @@ import { SEO } from '@/components/layout/SEO'
 import { PageLoader } from '@/components/ui/PageLoader'
 import { FadeIn, ImageReveal } from '@/components/animations/MotionPrimitives'
 import { useServices } from '@/hooks/useContent'
+import { api } from '@/api/client'
 
 const offices = [
   { city: 'New York HQ', address: '350 Fifth Avenue, Suite 4200', detail: 'New York, NY 10118', phone: '+1 (800) 555-1234' },
@@ -17,11 +19,26 @@ const offices = [
 export default function ContactPage() {
   const { data: services = [], isLoading } = useServices()
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm()
+  const [submitError, setSubmitError] = useState('')
+  const [submitSuccess, setSubmitSuccess] = useState('')
 
-  const onSubmit = async (_data) => {
-    await new Promise((r) => setTimeout(r, 1000))
-    reset()
-    alert('Thank you for your message. We will respond within 24 hours.')
+  const onSubmit = async (data) => {
+    setSubmitError('')
+    setSubmitSuccess('')
+
+    try {
+      const result = await api.submitContactMessage({
+        name: data.name,
+        email: data.email,
+        phone: data.phone ?? '',
+        service: data.service ?? '',
+        message: data.message,
+      })
+      reset()
+      setSubmitSuccess(result.message)
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Failed to send message. Please try again.')
+    }
   }
 
   if (isLoading) return <PageLoader />
@@ -48,6 +65,12 @@ export default function ContactPage() {
           <FadeIn type="fadeLeft" className="lg:col-span-3">
             <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-border bg-white p-8 md:p-10" noValidate>
               <h2 className="text-display text-2xl font-semibold text-navy">Send a Message</h2>
+              {submitSuccess ? (
+                <p className="mt-4 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-800" role="status">{submitSuccess}</p>
+              ) : null}
+              {submitError ? (
+                <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">{submitError}</p>
+              ) : null}
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-navy">Full Name *</label>

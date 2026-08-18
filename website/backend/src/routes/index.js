@@ -9,6 +9,8 @@ import {
   Industry,
   Career,
   HomeFaq,
+  TrustClientLogo,
+  Message,
 } from '../models/index.js'
 
 const router = Router()
@@ -172,6 +174,63 @@ router.get('/faqs', async (_req, res, next) => {
   try {
     const items = await HomeFaq.find().sort({ order: 1 }).lean()
     res.json(items.map(({ question, answer }) => ({ question, answer })))
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get('/trust-client-logos', async (_req, res, next) => {
+  try {
+    const items = await TrustClientLogo.find().sort({ order: 1 }).lean()
+    res.json(items.map(({ filename, src }) => ({ filename, src })))
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/messages', async (req, res, next) => {
+  try {
+    const { name, email, phone, service, message } = req.body ?? {}
+
+    if (!name?.trim() || !email?.trim() || !message?.trim()) {
+      return res.status(400).json({ error: 'Name, email, and message are required.' })
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email.trim())) {
+      return res.status(400).json({ error: 'Please provide a valid email address.' })
+    }
+
+    const saved = await Message.create({
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone?.trim() ?? '',
+      service: service?.trim() ?? '',
+      message: message.trim(),
+    })
+
+    res.status(201).json({
+      id: saved._id,
+      message: 'Thank you for your message. We will respond within 24 hours.',
+    })
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get('/messages', async (_req, res, next) => {
+  try {
+    const items = await Message.find().sort({ createdAt: -1 }).lean()
+    res.json(
+      items.map(({ _id, name, email, phone, service, message, createdAt }) => ({
+        id: _id,
+        name,
+        email,
+        phone,
+        service,
+        message,
+        createdAt,
+      })),
+    )
   } catch (error) {
     next(error)
   }
