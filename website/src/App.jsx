@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AnimatePresence } from 'framer-motion'
 import { Layout } from '@/components/layout/Layout'
 
@@ -17,10 +16,6 @@ const FAQsPage = lazy(() => import('@/pages/FAQsPage'))
 const ContactPage = lazy(() => import('@/pages/ContactPage'))
 const LegalDocumentPage = lazy(() => import('@/pages/LegalDocumentPage'))
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { staleTime: 1000 * 60 * 5, refetchOnWindowFocus: false } },
-})
-
 function PageLoader() {
   return (
     <div className="flex min-h-[60vh] items-center justify-center" role="status" aria-label="Loading">
@@ -32,29 +27,27 @@ function PageLoader() {
 export default function App() {
   return (
     <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <AnimatePresence mode="wait">
-            <Routes>
-              <Route element={<Layout />}>
-                <Route index element={<Suspense fallback={<PageLoader />}><HomePage /></Suspense>} />
-                <Route path="about" element={<Suspense fallback={<PageLoader />}><AboutPage /></Suspense>} />
-                <Route path="services" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
-                <Route path="services/:slug" element={<Suspense fallback={<PageLoader />}><ServiceDetailPage /></Suspense>} />
-                <Route path="team" element={<Suspense fallback={<PageLoader />}><TeamPage /></Suspense>} />
-                <Route path="blog" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
-                <Route path="blog/:slug" element={<Suspense fallback={<PageLoader />}><BlogDetailPage /></Suspense>} />
-                <Route path="career" element={<Suspense fallback={<PageLoader />}><CareerPage /></Suspense>} />
-                <Route path="faqs" element={<Suspense fallback={<PageLoader />}><FAQsPage /></Suspense>} />
-                <Route path="contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
-                <Route path="privacy-policy" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
-                <Route path="terms-of-service" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
-                <Route path="legal-disclaimer" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
-              </Route>
-            </Routes>
-          </AnimatePresence>
-        </BrowserRouter>
-      </QueryClientProvider>
+      <BrowserRouter>
+        <AnimatePresence mode="wait">
+          <Routes>
+            <Route element={<Layout />}>
+              <Route index element={<Suspense fallback={<PageLoader />}><HomePage /></Suspense>} />
+              <Route path="about" element={<Suspense fallback={<PageLoader />}><AboutPage /></Suspense>} />
+              <Route path="services" element={<Suspense fallback={<PageLoader />}><ServicesPage /></Suspense>} />
+              <Route path="services/:slug" element={<Suspense fallback={<PageLoader />}><ServiceDetailPage /></Suspense>} />
+              <Route path="team" element={<Suspense fallback={<PageLoader />}><TeamPage /></Suspense>} />
+              <Route path="blog" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
+              <Route path="blog/:slug" element={<Suspense fallback={<PageLoader />}><BlogDetailPage /></Suspense>} />
+              <Route path="career" element={<Suspense fallback={<PageLoader />}><CareerPage /></Suspense>} />
+              <Route path="faqs" element={<Suspense fallback={<PageLoader />}><FAQsPage /></Suspense>} />
+              <Route path="contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
+              <Route path="privacy-policy" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
+              <Route path="terms-of-service" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
+              <Route path="legal-disclaimer" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />
+            </Route>
+          </Routes>
+        </AnimatePresence>
+      </BrowserRouter>
     </HelmetProvider>
   )
 }

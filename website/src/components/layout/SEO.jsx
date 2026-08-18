@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 
 import { FIRM_NAME } from '@/data/brand'
+import { SITE_URL } from '@/lib/env'
 
-const SITE_URL = 'https://www.markshelland.com'
 const DEFAULT_IMAGE = '/Images/hero-main.png'
 
 export function SEO({ title, description, path = '', image = DEFAULT_IMAGE, type = 'website' }) {
@@ -65,7 +66,7 @@ export function Breadcrumbs({ items }) {
             <li key={item.label} className="flex items-center gap-2">
               {i > 0 && <span aria-hidden="true">/</span>}
               {item.href ? (
-                <a href={item.href} className="hover:text-navy">{item.label}</a>
+                <Link to={item.href} className="hover:text-navy">{item.label}</Link>
               ) : (
                 <span className="text-navy" aria-current="page">{item.label}</span>
               )}
