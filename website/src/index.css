@@ -53,6 +53,22 @@
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
+  :root {
+    --header-height: 5.75rem;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --header-height: 6.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --header-height: 8.75rem;
+    }
+  }
+
   ::selection {
     @apply bg-navy text-gold;
   }
@@ -82,5 +98,21 @@
 
   .section-eyebrow {
     @apply text-xs font-semibold tracking-widest uppercase text-gold;
+  }
+
+  .page-hero {
+    @apply pb-4 pt-[calc(var(--header-height)+0.25rem)] md:pb-6 lg:pb-10 lg:pt-[calc(var(--header-height)+0.75rem)];
+  }
+
+  .page-hero-grid {
+    @apply mx-auto grid w-full max-w-7xl items-start gap-4 px-5 sm:px-6 md:gap-6 lg:grid-cols-2 lg:gap-12 lg:px-8;
+  }
+
+  .page-section {
+    @apply pt-6 md:pt-8 lg:pt-16;
+  }
+
+  .page-section-end {
+    @apply pb-10 pt-6 md:pb-12 md:pt-8 lg:pb-16 lg:pt-16;
   }
 }

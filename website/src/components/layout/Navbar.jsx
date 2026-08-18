@@ -39,12 +39,12 @@ export function Navbar() {
     <div
       className={cn(
         'w-full transition-all duration-500',
-        scrolled ? 'bg-white/95 py-3 shadow-soft backdrop-blur-md' : 'bg-transparent py-5',
+        scrolled ? 'bg-white/95 py-2 shadow-soft backdrop-blur-md md:py-3' : 'bg-transparent py-3 md:py-5',
       )}
     >
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3" aria-label={`${brandAriaLabel()} home`}>
-          <img src="/logo.png" alt="" className="h-14 w-14 shrink-0 rounded-full object-cover shadow-md md:h-16 md:w-16" width={64} height={64} />
+          <img src="/logo.png" alt="" className="h-11 w-11 shrink-0 rounded-full object-cover shadow-md md:h-14 md:w-14 lg:h-16 lg:w-16" width={64} height={64} />
           <span className="text-display hidden text-lg leading-tight font-bold text-navy sm:block md:text-xl">
             <BrandName inheritColor ampClassName="text-gold" />
           </span>

@@ -34,32 +34,32 @@ export default function HomePage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pt-28 pb-6 md:pt-32 md:pb-10 lg:pt-40 lg:pb-16" aria-labelledby="hero-heading">
+      <section className="page-hero relative overflow-hidden" aria-labelledby="hero-heading">
         <FloatingShape className="pointer-events-none hidden lg:block top-32 -right-20 h-96 w-96" />
         <FloatingShape className="pointer-events-none hidden lg:block bottom-20 -left-32 h-64 w-64" />
 
-        <div className="container-custom grid items-center gap-8 md:grid-cols-2 lg:gap-16">
+        <div className="container-custom grid items-start gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-16">
           <div>
             <FadeIn>
               <p className="section-eyebrow tracking-[0.2em]">Intellectual Property Law</p>
             </FadeIn>
-            <h1 id="hero-heading" className="text-display mt-4 text-4xl leading-[1.08] font-semibold text-navy sm:text-5xl md:mt-6 md:text-6xl lg:text-7xl">
+            <h1 id="hero-heading" className="text-display mt-3 text-4xl leading-[1.08] font-semibold text-navy sm:text-5xl md:mt-4 lg:mt-6 lg:text-6xl xl:text-7xl">
               <TextReveal text="ONE FIRM EVERY IP SOLUTION" />
             </h1>
             <FadeIn delay={0.3}>
-              <p className="mt-4 max-w-lg text-base leading-relaxed text-muted md:mt-6 md:text-lg">
+              <p className="mt-3 max-w-lg text-base leading-relaxed text-muted sm:mt-4 md:text-lg lg:mt-6">
                 We counsel visionary brands, inventors, and creators on trademarks, patents, copyright, and strategic IP enforcement — with clarity, discretion, and uncompromising excellence.
               </p>
             </FadeIn>
             <FadeIn delay={0.4}>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 md:mt-10">
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 md:mt-6 lg:mt-10">
                 <Button href="/contact">Schedule Consultation</Button>
                 <Button href="/services" variant="outline">Explore Services</Button>
               </div>
             </FadeIn>
           </div>
 
-          <FadeIn type="fadeRight" delay={0.2} className="hidden md:block">
+          <FadeIn type="fadeRight" delay={0.2} className="hidden lg:block">
             <div className="relative">
               <motion.div
                 className="absolute -inset-4 rounded-3xl bg-navy/[0.03]"
@@ -85,14 +85,14 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="pt-16 bg-surface" aria-labelledby="practice-heading">
+      <section className="page-section bg-surface" aria-labelledby="practice-heading">
         <div className="container-custom">
           <FadeIn className="max-w-2xl">
             <p className="section-eyebrow">Our Services</p>
             <h2 id="practice-heading" className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Comprehensive IP Protection</h2>
             <p className="mt-4 text-lg text-muted">From registration to enforcement, we safeguard every dimension of your intellectual property portfolio.</p>
           </FadeIn>
-          <FadeIn delay={0.15} className="mt-16">
+          <FadeIn delay={0.15} className="mt-8 md:mt-12 lg:mt-16">
             <Swiper
               modules={[Autoplay, Pagination]}
               spaceBetween={32}
@@ -123,8 +123,8 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="pt-16" aria-labelledby="why-heading">
-        <div className="container-custom grid items-center gap-16 lg:grid-cols-2">
+      <section className="page-section" aria-labelledby="why-heading">
+        <div className="container-custom grid items-start gap-8 lg:grid-cols-2 lg:gap-16">
           <FadeIn type="fadeLeft">
             <p className="section-eyebrow">Why Choose Us</p>
             <h2 id="why-heading" className="text-display mt-4 text-4xl font-semibold text-navy">A Firm Built for the IP Economy</h2>
@@ -151,26 +151,26 @@ export default function HomePage() {
       </section>
 
       {/* Process */}
-      <section className="pt-16 bg-surface" aria-labelledby="process-heading">
+      <section className="page-section bg-surface" aria-labelledby="process-heading">
         <div className="container-custom">
           <FadeIn className="text-center">
             <p className="section-eyebrow">Our Process</p>
             <h2 id="process-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Five Steps to Protection</h2>
           </FadeIn>
-          <div className="mt-16">
+          <div className="mt-8 md:mt-12 lg:mt-16">
             <Timeline steps={processSteps} />
           </div>
         </div>
       </section>
 
       {/* Industry Expertise */}
-      <section className="pt-16" aria-labelledby="industry-heading">
+      <section className="page-section" aria-labelledby="industry-heading">
         <div className="container-custom">
           <FadeIn className="max-w-2xl">
             <p className="section-eyebrow">Industry Expertise</p>
             <h2 id="industry-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Deep Sector Knowledge</h2>
           </FadeIn>
-          <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerContainer className="mt-8 grid gap-6 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
             {industries.map((ind) => (
               <StaggerItem key={ind.title}>
                 <div className="rounded-2xl border border-border p-6 transition-shadow hover:shadow-soft md:p-8">
@@ -184,7 +184,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="pt-16 bg-surface" aria-labelledby="testimonials-heading">
+      <section className="page-section bg-surface" aria-labelledby="testimonials-heading">
         <div className="container-custom">
           <FadeIn>
             <p className="section-eyebrow">Client Testimonials</p>
@@ -197,7 +197,7 @@ export default function HomePage() {
             breakpoints={{ 768: { slidesPerView: 2 } }}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             pagination={{ clickable: true }}
-            className="mt-12 !pb-12"
+            className="mt-8 !pb-12 md:mt-12"
           >
             {testimonials.map((t) => (
               <SwiperSlide key={t.id}>
@@ -209,7 +209,7 @@ export default function HomePage() {
       </section>
 
       {/* Team Preview */}
-      <section className="pt-16" aria-labelledby="team-heading">
+      <section className="page-section" aria-labelledby="team-heading">
         <div className="container-custom">
           <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -220,7 +220,7 @@ export default function HomePage() {
               View Full Team <ArrowRight className="h-4 w-4" />
             </Link>
           </FadeIn>
-          <StaggerContainer className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <StaggerContainer className="mt-8 grid gap-8 sm:grid-cols-2 md:mt-12 lg:grid-cols-4">
             {teamMembers.slice(0, 4).map((member) => (
               <StaggerItem key={member.id}>
                 <TeamCard name={member.name} role={member.role} expertise={member.expertise} image={member.image} />
@@ -231,7 +231,7 @@ export default function HomePage() {
       </section>
 
       {/* Blog Preview */}
-      <section className="pt-16 bg-surface" aria-labelledby="blog-heading">
+      <section className="page-section bg-surface" aria-labelledby="blog-heading">
         <div className="container-custom">
           <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -240,7 +240,7 @@ export default function HomePage() {
             </div>
             <Link to="/blog" className="inline-flex items-center gap-1 text-sm font-semibold text-gold hover:text-gold-dark">Read All <ArrowRight className="h-4 w-4" /></Link>
           </FadeIn>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
             {blogPosts.slice(0, 3).map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
@@ -249,13 +249,13 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Preview */}
-      <section className="pt-16" aria-labelledby="faq-heading">
+      <section className="page-section" aria-labelledby="faq-heading">
         <div className="container-custom max-w-3xl">
           <FadeIn className="text-center">
             <p className="section-eyebrow">FAQs</p>
             <h2 id="faq-heading" className="text-display mt-4 text-4xl font-semibold text-navy">Common Questions</h2>
           </FadeIn>
-          <FadeIn delay={0.2} className="mt-10">
+          <FadeIn delay={0.2} className="mt-6 md:mt-10">
             <Accordion items={homeFaqs} />
           </FadeIn>
           <div className="mt-8 text-center">
@@ -265,7 +265,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="pt-16 pb-16 bg-surface">
+      <section className="page-section-end bg-surface">
         <div className="container-custom">
           <FadeIn>
             <CTABanner

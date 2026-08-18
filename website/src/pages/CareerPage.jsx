@@ -1,8 +1,9 @@
 import { FIRM_NAME } from '@/data/brand'
 import { SEO } from '@/components/layout/SEO'
+import { PageHero } from '@/components/layout/PageHero'
 import { Button } from '@/components/ui/Button'
 import { CTABanner } from '@/components/ui/Cards'
-import { FadeIn, ImageReveal, StaggerContainer, StaggerItem } from '@/components/animations/MotionPrimitives'
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations/MotionPrimitives'
 import { careers } from '@/data/content'
 
 const benefits = [
@@ -18,25 +19,20 @@ export default function CareerPage() {
     <>
       <SEO title="Careers" description={`Build your IP career at ${FIRM_NAME}. Explore open positions and our culture of excellence.`} path="/career" image="/Images/career-main.png" />
 
-      <section className="pt-36 pb-16 md:pt-44">
-        <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
-          <FadeIn type="fadeLeft">
-            <p className="section-eyebrow">Careers</p>
-            <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Build Your IP Career</h1>
-            <p className="mt-6 text-lg text-muted">Join a firm where precision, innovation, and professional growth converge.</p>
-          </FadeIn>
-          <FadeIn type="fadeRight">
-            <ImageReveal src="/Images/career-main.png" alt="Career opportunities illustration" className="rounded-3xl shadow-medium" />
-          </FadeIn>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Careers"
+        title="Build Your IP Career"
+        description="Join a firm where precision, innovation, and professional growth converge."
+        image="/Images/career-main.png"
+        imageAlt="Career opportunities illustration"
+      />
 
-      <section className="pt-16 bg-surface">
-        <div className="container-custom grid gap-16 lg:grid-cols-2">
+      <section className="page-section bg-surface">
+        <div className="container-custom grid gap-8 lg:grid-cols-2 lg:gap-12">
           <FadeIn type="fadeLeft">
-            <h2 className="text-display text-3xl font-semibold text-navy">Our Culture</h2>
-            <p className="mt-4 text-muted">We foster an environment of intellectual curiosity, collaborative excellence, and genuine commitment to client success. Every team member contributes to shaping the future of IP law.</p>
-            <ul className="mt-8 space-y-3">
+            <h2 className="text-display text-2xl font-semibold text-navy md:text-3xl">Our Culture</h2>
+            <p className="mt-3 text-muted md:mt-4">We foster an environment of intellectual curiosity, collaborative excellence, and genuine commitment to client success. Every team member contributes to shaping the future of IP law.</p>
+            <ul className="mt-6 space-y-3 md:mt-8">
               {benefits.map((b) => (
                 <li key={b} className="flex items-start gap-3 text-sm text-muted"><span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" />{b}</li>
               ))}
@@ -56,7 +52,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="pt-16 pb-16"><div className="container-custom"><FadeIn><CTABanner title="Don't See Your Role?" description="Send us your resume — we're always looking for exceptional IP talent." buttonText="Get in Touch" /></FadeIn></div></section>
+      <section className="page-section-end"><div className="container-custom"><FadeIn><CTABanner title="Don't See Your Role?" description="Send us your resume — we're always looking for exceptional IP talent." buttonText="Get in Touch" /></FadeIn></div></section>
     </>
   )
 }

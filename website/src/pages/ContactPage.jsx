@@ -1,17 +1,10 @@
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin } from 'lucide-react'
 import { FIRM_NAME } from '@/data/brand'
 import { SEO } from '@/components/layout/SEO'
-import { FadeIn, ImageReveal } from '@/components/animations/MotionPrimitives'
+import { PageHero } from '@/components/layout/PageHero'
+import { FadeIn } from '@/components/animations/MotionPrimitives'
 import { services } from '@/data/services'
-
-const offices = [
-  { city: 'New York HQ', address: '350 Fifth Avenue, Suite 4200', detail: 'New York, NY 10118', phone: '+1 (800) 555-1234' },
-  { city: 'San Francisco', address: '555 Market Street, Suite 1200', detail: 'San Francisco, CA 94105', phone: '+1 (415) 555-0100' },
-  { city: 'London', address: '30 St Mary Axe', detail: 'London EC3A 8BF, UK', phone: '+44 20 7946 0958' },
-  { city: 'Singapore', address: '1 Raffles Place, Tower 2', detail: 'Singapore 048616', phone: '+65 6123 4567' },
-]
 
 export default function ContactPage() {
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm()
@@ -26,22 +19,17 @@ export default function ContactPage() {
     <>
       <SEO title="Contact Us" description={`Get in touch with ${FIRM_NAME} for a confidential IP consultation.`} path="/contact" image="/Images/contact-main.png" />
 
-      <section className="pt-36 pb-16 md:pt-44">
-        <div className="container-custom grid items-center gap-12 lg:grid-cols-2">
-          <FadeIn type="fadeLeft">
-            <p className="section-eyebrow">Contact</p>
-            <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">Get in Touch</h1>
-            <p className="mt-6 text-lg text-muted">Schedule a confidential consultation with our intellectual property specialists.</p>
-          </FadeIn>
-          <FadeIn type="fadeRight">
-            <ImageReveal src="/Images/contact-main.png" alt="Contact illustration" className="rounded-3xl shadow-medium" />
-          </FadeIn>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Get in Touch"
+        description="Schedule a confidential consultation with our intellectual property specialists."
+        image="/Images/contact-main.png"
+        imageAlt="Contact illustration"
+      />
 
-      <section className="pt-16 pb-16 bg-surface">
-        <div className="container-custom grid gap-16 lg:grid-cols-5">
-          <FadeIn type="fadeLeft" className="lg:col-span-3">
+      <section className="page-section-end bg-surface">
+        <div className="container-custom max-w-3xl">
+          <FadeIn type="fadeLeft">
             <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-border bg-white p-8 md:p-10" noValidate>
               <h2 className="text-display text-2xl font-semibold text-navy">Send a Message</h2>
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -82,23 +70,6 @@ export default function ContactPage() {
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
-          </FadeIn>
-
-          <FadeIn type="fadeRight" className="lg:col-span-2">
-            <h2 className="text-display text-2xl font-semibold text-navy">Office Locations</h2>
-            <div className="mt-8 space-y-6">
-              {offices.map((office) => (
-                <div key={office.city} className="rounded-xl border border-border bg-white p-6">
-                  <h3 className="font-semibold text-navy">{office.city}</h3>
-                  <p className="mt-2 flex items-start gap-2 text-sm text-muted"><MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />{office.address}<br />{office.detail}</p>
-                  <p className="mt-2 flex items-center gap-2 text-sm text-muted"><Phone className="h-4 w-4" />{office.phone}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 flex items-center gap-2 text-sm text-muted">
-              <Mail className="h-4 w-4" />
-              <a href="mailto:contact@markshelland.com" className="hover:text-navy">contact@markshelland.com</a>
-            </div>
           </FadeIn>
         </div>
       </section>

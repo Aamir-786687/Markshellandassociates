@@ -1,10 +1,11 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { CheckCircle } from 'lucide-react'
 import { SEO, Breadcrumbs } from '@/components/layout/SEO'
+import { PageHero } from '@/components/layout/PageHero'
 import { getServiceBySlug, getRelatedServices } from '@/data/services'
 import { Accordion } from '@/components/ui/Accordion'
 import { ServiceCard, Timeline, CTABanner } from '@/components/ui/Cards'
-import { FadeIn, ImageReveal, StaggerContainer, StaggerItem } from '@/components/animations/MotionPrimitives'
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations/MotionPrimitives'
 import { Button } from '@/components/ui/Button'
 
 export default function ServiceDetailPage() {
@@ -24,45 +25,41 @@ export default function ServiceDetailPage() {
         image={service.image}
       />
 
-      <section className="pt-36 pb-16 md:pt-44 md:pb-24">
-        <div className="container-custom">
+      <PageHero
+        eyebrow="Service"
+        title={service.title}
+        description={service.shortDescription}
+        image={service.image}
+        imageAlt={`Illustration for ${service.title}`}
+        titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+        topContent={
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
             { label: 'Services', href: '/services' },
             { label: service.title },
           ]} />
-
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <FadeIn type="fadeLeft">
-              <p className="section-eyebrow">Service</p>
-              <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl lg:text-6xl">{service.title}</h1>
-              <p className="mt-6 text-lg leading-relaxed text-muted">{service.shortDescription}</p>
-              <div className="mt-8">
-                <Button href="/contact">Request Consultation</Button>
-              </div>
-            </FadeIn>
-            <FadeIn type="fadeRight">
-              <ImageReveal src={service.image} alt={`Illustration for ${service.title}`} className="rounded-3xl shadow-medium" />
-            </FadeIn>
-          </div>
+        }
+      >
+        <div className="mt-4 md:mt-6">
+          <Button href="/contact">Request Consultation</Button>
         </div>
-      </section>
+      </PageHero>
 
-      <section className="pt-16 bg-surface">
+      <section className="page-section bg-surface">
         <div className="container-custom max-w-4xl">
           <FadeIn>
-            <h2 className="text-display text-3xl font-semibold text-navy">Overview</h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted">{service.overview}</p>
+            <h2 className="text-display text-2xl font-semibold text-navy md:text-3xl">Overview</h2>
+            <p className="mt-4 text-base leading-relaxed text-muted md:mt-6 md:text-lg">{service.overview}</p>
           </FadeIn>
         </div>
       </section>
 
-      <section className="pt-16">
+      <section className="page-section">
         <div className="container-custom">
           <FadeIn>
-            <h2 className="text-display text-3xl font-semibold text-navy">Key Benefits</h2>
+            <h2 className="text-display text-2xl font-semibold text-navy md:text-3xl">Key Benefits</h2>
           </FadeIn>
-          <StaggerContainer className="mt-10 grid gap-4 sm:grid-cols-2">
+          <StaggerContainer className="mt-6 grid gap-4 sm:grid-cols-2 md:mt-10">
             {service.benefits.map((benefit) => (
               <StaggerItem key={benefit}>
                 <div className="flex items-start gap-3 rounded-xl border border-border p-5">
@@ -75,35 +72,35 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="pt-16 bg-surface">
+      <section className="page-section bg-surface">
         <div className="container-custom">
           <FadeIn className="text-center">
-            <h2 className="text-display text-3xl font-semibold text-navy">Our Process</h2>
+            <h2 className="text-display text-2xl font-semibold text-navy md:text-3xl">Our Process</h2>
           </FadeIn>
-          <div className="mt-12">
+          <div className="mt-8 md:mt-12">
             <Timeline steps={service.process} />
           </div>
         </div>
       </section>
 
-      <section className="pt-16">
+      <section className="page-section">
         <div className="container-custom max-w-3xl">
           <FadeIn>
-            <h2 className="text-display text-3xl font-semibold text-navy">Frequently Asked Questions</h2>
+            <h2 className="text-display text-2xl font-semibold text-navy md:text-3xl">Frequently Asked Questions</h2>
           </FadeIn>
-          <FadeIn delay={0.2} className="mt-8">
+          <FadeIn delay={0.2} className="mt-6 md:mt-8">
             <Accordion items={service.faqs} />
           </FadeIn>
         </div>
       </section>
 
       {related.length > 0 && (
-        <section className="pt-16 bg-surface">
+        <section className="page-section bg-surface">
           <div className="container-custom">
             <FadeIn>
-              <h2 className="text-display text-3xl font-semibold text-navy">Related Services</h2>
+              <h2 className="text-display text-2xl font-semibold text-navy md:text-3xl">Related Services</h2>
             </FadeIn>
-            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 md:mt-10 lg:grid-cols-3 lg:gap-8">
               {related.map((s, i) => (
                 <ServiceCard key={s.slug} service={s} index={i} />
               ))}
@@ -112,7 +109,7 @@ export default function ServiceDetailPage() {
         </section>
       )}
 
-      <section className="pt-16 pb-16">
+      <section className="page-section-end">
         <div className="container-custom">
           <CTABanner
             title={`Ready to Get Started with ${service.title}?`}

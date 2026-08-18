@@ -21,7 +21,7 @@ export default function BlogDetailPage() {
         type="article"
       />
 
-      <article className="pt-36 pb-16 md:pt-44 md:pb-24">
+      <article className="page-hero pb-8 md:pb-12 lg:pb-16">
         <div className="container-custom max-w-4xl">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
@@ -30,7 +30,7 @@ export default function BlogDetailPage() {
           ]} />
 
           <FadeIn>
-            <Link to="/blog" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-dark">
+            <Link to="/blog" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-dark md:mt-6">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Back to Blog
             </Link>
@@ -47,7 +47,7 @@ export default function BlogDetailPage() {
             <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">{post.title}</h1>
           </FadeIn>
 
-          <FadeIn delay={0.1} className="mt-10">
+          <FadeIn delay={0.1} className="mt-6 md:mt-8">
             <ImageReveal
               src={post.image}
               alt={post.title}
