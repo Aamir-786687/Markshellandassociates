@@ -1,4 +1,23 @@
-const WHATSAPP_URL = 'https://web.whatsapp.com/send?phone=919211978238&text='
+import { useMemo } from 'react'
+
+const WHATSAPP_PHONE = '919211978238'
+const WHATSAPP_MESSAGE = 'Hello! I would like to inquire about your IP services.'
+
+function isMobileDevice() {
+  if (typeof navigator === 'undefined') return false
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent)
+}
+
+function getWhatsAppUrl() {
+  const text = encodeURIComponent(WHATSAPP_MESSAGE)
+
+  if (isMobileDevice()) {
+    // Opens the native WhatsApp app on iOS/Android
+    return `https://wa.me/${WHATSAPP_PHONE}?text=${text}`
+  }
+
+  return `https://web.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${text}`
+}
 
 function WhatsAppIcon({ className }) {
   return (
@@ -9,11 +28,14 @@ function WhatsAppIcon({ className }) {
 }
 
 export function WhatsAppButton() {
+  const whatsappUrl = useMemo(() => getWhatsAppUrl(), [])
+  const isMobile = useMemo(() => isMobileDevice(), [])
+
   return (
     <a
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={whatsappUrl}
+      target={isMobile ? undefined : '_blank'}
+      rel={isMobile ? undefined : 'noopener noreferrer'}
       aria-label="Chat with us on WhatsApp"
       className="fixed right-5 bottom-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 hover:shadow-xl md:right-6 md:bottom-6 md:h-16 md:w-16"
     >
