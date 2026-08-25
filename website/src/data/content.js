@@ -329,11 +329,7 @@ export const industries = [
 ]
 
 export const careers = [
-  { title: 'Senior Trademark Attorney', location: 'New York', type: 'Full-time', experience: '8+ years' },
-  { title: 'Patent Agent — Biotechnology', location: 'San Francisco', type: 'Full-time', experience: '3+ years' },
-  { title: 'IP Litigation Associate', location: 'Chicago', type: 'Full-time', experience: '4+ years' },
-  { title: 'Legal Technology Specialist', location: 'Remote', type: 'Full-time', experience: '2+ years' },
-  { title: 'Paralegal — IP Operations', location: 'London', type: 'Full-time', experience: '1+ years' },
+  { title: 'IP Intern', location: 'India', type: 'Full-time', experience: '0-1 years' },
 ]
 
 export const homeFaqs = [
