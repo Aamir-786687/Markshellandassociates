@@ -1,23 +1,5 @@
 import { useMemo } from 'react'
-
-const WHATSAPP_PHONE = '919211978238'
-const WHATSAPP_MESSAGE = 'Hello! I would like to inquire about your IP services.'
-
-function isMobileDevice() {
-  if (typeof navigator === 'undefined') return false
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent)
-}
-
-function getWhatsAppUrl() {
-  const text = encodeURIComponent(WHATSAPP_MESSAGE)
-
-  if (isMobileDevice()) {
-    // Opens the native WhatsApp app on iOS/Android
-    return `https://wa.me/${WHATSAPP_PHONE}?text=${text}`
-  }
-
-  return `https://web.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${text}`
-}
+import { DEFAULT_WHATSAPP_MESSAGE, getWhatsAppUrl, isMobileDevice } from '@/lib/whatsapp'
 
 function WhatsAppIcon({ className }) {
   return (
@@ -28,7 +10,7 @@ function WhatsAppIcon({ className }) {
 }
 
 export function WhatsAppButton() {
-  const whatsappUrl = useMemo(() => getWhatsAppUrl(), [])
+  const whatsappUrl = useMemo(() => getWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE), [])
   const isMobile = useMemo(() => isMobileDevice(), [])
 
   return (

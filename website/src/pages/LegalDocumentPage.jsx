@@ -22,11 +22,13 @@ export default function LegalDocumentPage() {
           ]} />
 
           <FadeIn className="mt-4 md:mt-6">
-            <p className="section-eyebrow">Legal</p>
-            <h1 className="text-display mt-3 text-3xl font-semibold text-navy sm:text-4xl md:mt-4 md:text-5xl">{doc.title}</h1>
-            {doc.lastUpdated ? (
-              <p className="mt-3 text-sm text-muted md:mt-4">Last updated: {doc.lastUpdated}</p>
-            ) : null}
+            <div className="hero-text-stack">
+              <p className="section-eyebrow">Legal</p>
+              <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl">{doc.title}</h1>
+              {doc.lastUpdated ? (
+                <p className="text-sm text-muted">Last updated: {doc.lastUpdated}</p>
+              ) : null}
+            </div>
           </FadeIn>
         </div>
       </section>

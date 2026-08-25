@@ -6,9 +6,14 @@ const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
 const clientsDir = path.join(root, 'public', 'Images', 'clients')
 const outFile = path.join(root, 'src', 'data', 'trustClientLogos.js')
 
+const IMAGE_EXT = /\.(jpe?g|png|webp|gif|svg)$/i
+
 const files = fs
   .readdirSync(clientsDir)
-  .filter((f) => fs.statSync(path.join(clientsDir, f)).isFile())
+  .filter((f) => {
+    const fullPath = path.join(clientsDir, f)
+    return fs.statSync(fullPath).isFile() && IMAGE_EXT.test(f)
+  })
   .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
 
 const body =

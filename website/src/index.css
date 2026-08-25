@@ -27,12 +27,18 @@
   --shadow-medium: 0 12px 40px rgba(5, 22, 43, 0.08);
   --shadow-strong: 0 24px 60px rgba(5, 22, 43, 0.12);
 
-  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee: marquee 80s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 80s linear infinite;
 }
 
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 @layer base {
@@ -54,12 +60,12 @@
   }
 
   :root {
-    --header-height: 5.75rem;
+    --header-height: 6.25rem;
   }
 
   @media (min-width: 768px) {
     :root {
-      --header-height: 6.75rem;
+      --header-height: 7.5rem;
     }
   }
 
@@ -100,8 +106,20 @@
     @apply text-xs font-semibold tracking-widest uppercase text-gold;
   }
 
+  .hero-text-stack {
+    @apply flex flex-col gap-4 md:gap-5 lg:gap-6;
+  }
+
+  .hero-title {
+    @apply font-display font-semibold leading-snug tracking-tight text-navy;
+  }
+
+  .section-heading-stack {
+    @apply flex flex-col gap-3 md:gap-4;
+  }
+
   .page-hero {
-    @apply pb-4 pt-[calc(var(--header-height)+0.25rem)] md:pb-6 lg:pb-10 lg:pt-[calc(var(--header-height)+0.75rem)];
+    @apply pb-4 pt-[calc(var(--header-height)+0.5rem)] md:pb-6 md:pt-[calc(var(--header-height)+0.75rem)] lg:pb-10 lg:pt-[calc(var(--header-height)+1rem)];
   }
 
   .page-hero-grid {

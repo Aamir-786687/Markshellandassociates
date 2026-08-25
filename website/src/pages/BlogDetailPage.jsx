@@ -37,14 +37,16 @@ export default function BlogDetailPage() {
           </FadeIn>
 
           <FadeIn delay={0.05}>
-            <div className="mt-8 flex flex-wrap items-center gap-3 text-xs text-muted">
-              <span className="section-eyebrow normal-case tracking-wider">{post.category}</span>
-              <span aria-hidden="true">·</span>
-              <time dateTime={post.date}>{post.date}</time>
-              <span aria-hidden="true">·</span>
-              <span>{post.readTime}</span>
+            <div className="hero-text-stack mt-6 md:mt-8">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
+                <span className="section-eyebrow normal-case tracking-wider">{post.category}</span>
+                <span aria-hidden="true">·</span>
+                <time dateTime={post.date}>{post.date}</time>
+                <span aria-hidden="true">·</span>
+                <span>{post.readTime}</span>
+              </div>
+              <h1 className="hero-title text-4xl md:text-5xl">{post.title}</h1>
             </div>
-            <h1 className="text-display mt-4 text-4xl font-semibold text-navy md:text-5xl">{post.title}</h1>
           </FadeIn>
 
           <FadeIn delay={0.1} className="mt-6 md:mt-8">

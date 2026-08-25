@@ -15,19 +15,21 @@ export function PageHero({
   const heroGrid = (
     <div className={cn('page-hero-grid', topContent && 'mt-4 md:mt-6')}>
       <FadeIn type="fadeLeft">
-        {eyebrow ? <p className="section-eyebrow">{eyebrow}</p> : null}
-        <h1
-          className={cn(
-            'text-display mt-3 font-semibold text-navy md:mt-4',
-            titleClassName ?? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl',
-          )}
-        >
-          {title}
-        </h1>
-        {description ? (
-          <div className="mt-3 text-base leading-relaxed text-muted sm:mt-4 md:text-lg">{description}</div>
-        ) : null}
-        {children}
+        <div className="hero-text-stack">
+          {eyebrow ? <p className="section-eyebrow">{eyebrow}</p> : null}
+          <h1
+            className={cn(
+              'hero-title',
+              titleClassName ?? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl',
+            )}
+          >
+            {title}
+          </h1>
+          {description ? (
+            <div className="text-base leading-relaxed text-muted md:text-lg">{description}</div>
+          ) : null}
+          {children}
+        </div>
       </FadeIn>
       {image ? (
         <FadeIn type="fadeRight" className="hidden lg:block">

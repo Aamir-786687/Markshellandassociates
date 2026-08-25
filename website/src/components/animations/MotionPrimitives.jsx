@@ -78,18 +78,19 @@ export function StaggerItem({ children, className }) {
 export function TextReveal({ text, className, delay = 0 }) {
   const words = text.split(' ')
   return (
-    <span className={cn('inline-flex flex-wrap', className)} aria-label={text}>
+    <span className={cn('flex flex-wrap gap-x-[0.3em] gap-y-2', className)} aria-label={text}>
       {words.map((word, i) => (
-        <motion.span
-          key={`${word}-${i}`}
-          className="mr-[0.25em] inline-block overflow-hidden"
-          initial={{ y: '100%', opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: delay + i * 0.04, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {word}
-        </motion.span>
+        <span key={`${word}-${i}`} className="inline-block overflow-hidden py-px">
+          <motion.span
+            className="block"
+            initial={{ y: '100%', opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: delay + i * 0.04, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {word}
+          </motion.span>
+        </span>
       ))}
     </span>
   )
@@ -145,29 +146,48 @@ export function FloatingShape({ className }) {
   )
 }
 
-export function Marquee({ items, images, className, imageSrc }) {
+export function Marquee({ items, images, className, imageSrc, reverse = false, durationSeconds }) {
   const list = images ?? items ?? []
-  const doubled = [...list, ...list]
   const resolveSrc = imageSrc ?? ((item) => (item.startsWith('/') ? item : item))
-  return (
-    <div className={cn('overflow-hidden', className)} aria-hidden="true">
-      <div className="flex animate-marquee items-center whitespace-nowrap">
-        {doubled.map((item, i) =>
-          images ? (
+  const duration = durationSeconds ?? Math.max(60, list.length * 2.5)
+  const animationClass = reverse ? 'animate-marquee-reverse' : 'animate-marquee'
+
+  const renderTrack = (keyPrefix) => (
+    <div className="flex shrink-0 items-center gap-6 md:gap-8">
+      {list.map((item, i) =>
+        images ? (
+          <div
+            key={`${keyPrefix}-${item}-${i}`}
+            className="flex size-[2in] shrink-0 items-center justify-center"
+          >
             <img
-              key={`${item}-${i}`}
               src={resolveSrc(item)}
               alt=""
-              className="mx-8 size-[1in] flex-shrink-0 object-contain"
-              loading="lazy"
+              className="size-[1.2in] object-contain p-1"
+              loading="eager"
               decoding="async"
             />
-          ) : (
-            <span key={`${item}-${i}`} className="mx-8 text-display text-2xl font-semibold tracking-wider text-navy/20 md:text-3xl">
-              {item}
-            </span>
-          ),
-        )}
+          </div>
+        ) : (
+          <span
+            key={`${keyPrefix}-${item}-${i}`}
+            className="text-display shrink-0 px-3 text-2xl font-semibold tracking-wider text-navy/20 md:text-3xl"
+          >
+            {item}
+          </span>
+        ),
+      )}
+    </div>
+  )
+
+  return (
+    <div className={cn('overflow-hidden', className)} aria-hidden="true">
+      <div
+        className={cn('flex w-max items-center gap-6 md:gap-8', animationClass)}
+        style={{ animationDuration: `${duration}s` }}
+      >
+        {renderTrack('a')}
+        {renderTrack('b')}
       </div>
     </div>
   )
