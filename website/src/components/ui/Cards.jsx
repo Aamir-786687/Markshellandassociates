@@ -161,7 +161,7 @@ export function CTABanner({ title, description, buttonText = 'Schedule Consultat
         <p className="mt-4 text-white/70">{description}</p>
       </div>
       <div className="relative mt-8 md:mt-0">
-        <Button href={buttonHref} variant="primary" className="!bg-white !text-navy hover:!bg-surface">
+        <Button to={buttonHref} variant="primary" className="!bg-white !text-navy hover:!bg-surface">
           {buttonText}
         </Button>
       </div>

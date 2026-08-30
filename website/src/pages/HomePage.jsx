@@ -53,8 +53,8 @@ export default function HomePage() {
             </FadeIn>
             <FadeIn delay={0.4}>
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-                <Button href="/contact">Schedule Consultation</Button>
-                <Button href="/services" variant="outline">Explore Services</Button>
+                <Button to="/contact">Schedule Consultation</Button>
+                <Button to="/services" variant="outline">Explore Services</Button>
               </div>
             </FadeIn>
           </div>
