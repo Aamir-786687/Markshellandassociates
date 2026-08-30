@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Protect SMTP config
+  RewriteRule ^api/config\.php$ - [F,L]
+
+  # API routes (Hostinger / Apache static hosting)
+  RewriteRule ^api/contact$ api/contact.php [L,QSA]
+  RewriteRule ^api/career-apply$ api/career-apply.php [L,QSA]
+
+  # Serve existing files and folders
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # React SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Block direct access to example config
+<Files "config.example.php">
+  Require all denied
+</Files>

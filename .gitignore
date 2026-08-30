@@ -1,18 +1,19 @@
 # Dependencies
 node_modules/
+**/node_modules/
 
 # Build output
 dist/
+**/dist/
 build/
-*.local
-
-# Vite
 .vite/
 
-# Environment variables
+# Environment & secrets
 .env
 .env.*
 !.env.example
+website/public/api/config.php
+website/.env
 
 # Logs
 logs/
@@ -30,29 +31,21 @@ pnpm-debug.log*
 *~
 .DS_Store
 Thumbs.db
-
-# OS
 Desktop.ini
 
-# TypeScript
+# TypeScript / tooling cache
 *.tsbuildinfo
-
-# Testing / coverage
-coverage/
-.nyc_output/
-
-# Cache
 .cache/
 .eslintcache
 *.cache
-
-# Optional npm cache
 .npm
+coverage/
+.nyc_output/
 
-# Debug
+# Debug / certs
 *.pem
 
-# Cursor / local tooling (keep project config if needed)
+# Cursor / local tooling
 .cursor/
 
 # Temporary files
