@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/Button'
 import { CTABanner } from '@/components/ui/Cards'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations/MotionPrimitives'
 import { careers } from '@/data/content'
-import { getCareerApplyMessage, getWhatsAppUrl } from '@/lib/whatsapp'
 
 const benefits = [
   'Competitive compensation and performance bonuses',
@@ -46,7 +45,7 @@ export default function CareerPage() {
                   <h3 className="text-display text-lg font-semibold text-navy">{job.title}</h3>
                   <p className="mt-2 text-sm text-muted">{job.location} · {job.type} · {job.experience}</p>
                   <Button
-                    href={getWhatsAppUrl(getCareerApplyMessage(job.title))}
+                    to={`/career/${job.slug}`}
                     variant="outline"
                     size="sm"
                     className="mt-4"

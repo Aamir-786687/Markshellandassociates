@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { AnimatePresence } from 'framer-motion'
 import App from './App'
 import { LoadingScreen } from '@/components/ui/Button'
+import './fonts.css'
 import './index.css'
 
 function Root() {

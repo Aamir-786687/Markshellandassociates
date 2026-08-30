@@ -110,10 +110,16 @@ export function TestimonialCard({ quote, author, role, company }) {
   return (
     <blockquote className="rounded-2xl bg-surface p-8 md:p-10">
       <p className="text-display text-xl italic leading-relaxed text-navy md:text-2xl">&ldquo;<TextWithBrandName text={quote} />&rdquo;</p>
-      <footer className="mt-8 border-t border-border pt-6">
-        <cite className="not-italic font-semibold text-navy">{author}</cite>
-        <p className="text-sm text-muted">{role}, {company}</p>
-      </footer>
+      {author && (
+        <footer className="mt-8 border-t border-border pt-6">
+          <cite className="not-italic font-semibold text-navy">{author}</cite>
+          {(role || company) && (
+            <p className="text-sm text-muted">
+              {[role, company].filter(Boolean).join(', ')}
+            </p>
+          )}
+        </footer>
+      )}
     </blockquote>
   )
 }

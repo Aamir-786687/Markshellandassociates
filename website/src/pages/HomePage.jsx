@@ -81,7 +81,7 @@ export default function HomePage() {
       {/* Trust */}
       <section className="border-y border-border py-6 lg:py-10" aria-label="Trusted by industry leaders">
         <p className="container-custom section-eyebrow mb-4 text-center md:mb-6">Trusted by industry leaders</p>
-        <Marquee images={trustClientLogos} imageSrc={getClientLogoSrc} />
+        <Marquee clients={trustClientLogos} imageSrc={getClientLogoSrc} />
       </section>
 
       {/* Services */}

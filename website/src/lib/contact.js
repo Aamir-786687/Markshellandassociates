@@ -1,60 +1,40 @@
-import { CONTACT_FORM_ACCESS_KEY, CONTACT_FORM_ENDPOINT } from '@/lib/env'
+import { CONTACT_API } from '@/lib/env'
+import { getServiceBySlug } from '@/data/services'
 import { sanitizeEmail, sanitizePhone, sanitizeText } from '@/lib/sanitize'
 
-const ALLOWED_ENDPOINTS = [
-  'https://api.web3forms.com/submit',
-  'https://formspree.io/',
-]
-
-function isAllowedEndpoint(url) {
-  try {
-    const parsed = new URL(url)
-    return ALLOWED_ENDPOINTS.some((allowed) => {
-      const allowedUrl = new URL(allowed)
-      return parsed.origin === allowedUrl.origin || parsed.href.startsWith(allowed)
-    })
-  } catch {
-    return false
-  }
-}
-
 export function normalizeContactPayload(raw) {
+  const service = sanitizeText(raw.service || '', 80)
+  const serviceRecord = service ? getServiceBySlug(service) : null
+
   return {
     name: sanitizeText(raw.name, 120),
     email: sanitizeEmail(raw.email),
     phone: sanitizePhone(raw.phone || ''),
-    service: sanitizeText(raw.service || '', 80),
+    service,
+    serviceTitle: serviceRecord?.title || '',
     message: sanitizeText(raw.message, 5000),
-    subject: `Contact inquiry from ${sanitizeText(raw.name, 120)}`,
   }
 }
 
 export async function submitContactForm(raw) {
-  if (!CONTACT_FORM_ENDPOINT) {
-    throw new Error('CONTACT_NOT_CONFIGURED')
-  }
+  const payload = normalizeContactPayload(raw)
 
-  if (!isAllowedEndpoint(CONTACT_FORM_ENDPOINT)) {
-    throw new Error('CONTACT_ENDPOINT_NOT_ALLOWED')
-  }
-
-  const fields = normalizeContactPayload(raw)
-  const body = CONTACT_FORM_ACCESS_KEY
-    ? { access_key: CONTACT_FORM_ACCESS_KEY, ...fields, from_name: fields.name, replyto: fields.email }
-    : fields
-
-  const response = await fetch(CONTACT_FORM_ENDPOINT, {
+  const response = await fetch(CONTACT_API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(payload),
   })
 
+  const data = await response.json().catch(() => ({}))
+
   if (!response.ok) {
-    throw new Error('SUBMIT_FAILED')
+    const error = new Error(data.error || 'SUBMIT_FAILED')
+    error.code = data.error
+    throw error
   }
 
-  return response.json().catch(() => ({}))
+  return data
 }

@@ -13,8 +13,9 @@
   --color-muted: #4A6278;
   --color-border: #E2E8F0;
 
-  --font-display: "Libre Baskerville", "Times New Roman", Georgia, serif;
-  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-woop: "Woop", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-woop);
+  --font-body: var(--font-woop);
 
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -44,6 +45,7 @@
 @layer base {
   html {
     scroll-behavior: auto;
+    font-family: var(--font-body);
   }
 
   html.lenis, html.lenis body {
@@ -60,18 +62,12 @@
   }
 
   :root {
-    --header-height: 6.25rem;
+    --nav-height: 3.25rem;
   }
 
   @media (min-width: 768px) {
     :root {
-      --header-height: 7.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    :root {
-      --header-height: 8.75rem;
+      --nav-height: 3.5rem;
     }
   }
 
@@ -87,7 +83,7 @@
 @layer utilities {
   .text-display {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
   .container-custom {
@@ -119,7 +115,7 @@
   }
 
   .page-hero {
-    @apply pb-4 pt-[calc(var(--header-height)+0.5rem)] md:pb-6 md:pt-[calc(var(--header-height)+0.75rem)] lg:pb-10 lg:pt-[calc(var(--header-height)+1rem)];
+    @apply pb-4 pt-6 md:pb-6 md:pt-8 lg:pb-10 lg:pt-12;
   }
 
   .page-hero-grid {

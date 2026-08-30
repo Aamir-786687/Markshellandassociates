@@ -102,6 +102,44 @@ export const services = [
     image: '/Images/service-gi.png',
     relatedSlugs: ['trademark-registration', 'trademark-enforcement', 'copyright-registration'],
   },
+  {
+    id: '11', slug: 'fssai-registration', title: 'FSSAI Registration',
+    shortDescription: 'Obtain and maintain FSSAI licenses for food businesses — registration, state, and central licensing.',
+    overview: 'We assist food manufacturers, distributors, retailers, and cloud kitchens with FSSAI compliance — from basic registration and state licenses to central licensing, renewals, modifications, and label review under the Food Safety and Standards Act.',
+    benefits: ['FSSAI registration and license classification', 'State and central license applications', 'Renewal and modification support', 'Food label and packaging compliance review', 'Documentation and regulatory filing assistance'],
+    process: [
+      { step: 1, title: 'Business Assessment', description: 'We evaluate your food business category, turnover, and operational scope to determine the correct FSSAI license type.' },
+      { step: 2, title: 'Documentation', description: 'Required documents, premises details, and business proofs are prepared and verified for filing.' },
+      { step: 3, title: 'Application & Filing', description: 'We submit your FSSAI application through the FoSCoS portal and respond to authority queries.' },
+      { step: 4, title: 'Compliance Support', description: 'Post-approval guidance on renewals, modifications, and ongoing food safety compliance.' },
+    ],
+    faqs: [
+      ...defaultFaqs,
+      { question: 'Which FSSAI license does my business need?', answer: 'Basic registration applies to small businesses below specified turnover thresholds. State and central licenses depend on business scale, product category, and operational footprint. We advise during consultation.' },
+      { question: 'How long does FSSAI registration take?', answer: 'Basic registration may be processed within 7–15 working days in many cases. State and central licenses can take longer depending on documentation and authority processing times.' },
+    ],
+    image: '/Images/service-gi.png',
+    relatedSlugs: ['trademark-registration', 'company-registration', 'due-diligence'],
+  },
+  {
+    id: '12', slug: 'company-registration', title: 'Company Registration',
+    shortDescription: 'Incorporate and structure your business — private limited, LLP, OPC, and MCA compliance.',
+    overview: 'We guide entrepreneurs and enterprises through company formation and corporate compliance — including private limited companies, LLPs, one person companies, name approval, incorporation filings, and post-incorporation statutory requirements with the Ministry of Corporate Affairs.',
+    benefits: ['Entity selection and structuring advice', 'Name reservation and incorporation filings', 'MOA, AOA, and LLP agreement drafting support', 'DIN, DSC, and director compliance', 'Post-incorporation MCA and regulatory guidance'],
+    process: [
+      { step: 1, title: 'Consultation', description: 'We recommend the right entity structure based on your business goals, ownership, and compliance needs.' },
+      { step: 2, title: 'Name & Documentation', description: 'Company name is reserved and incorporation documents are prepared and verified.' },
+      { step: 3, title: 'Incorporation Filing', description: 'SPICe+ and related MCA filings are submitted for company or LLP registration.' },
+      { step: 4, title: 'Post-Incorporation', description: 'We assist with PAN, TAN, bank onboarding readiness, and initial statutory compliances.' },
+    ],
+    faqs: [
+      ...defaultFaqs,
+      { question: 'What is the difference between a private limited company and an LLP?', answer: 'A private limited company offers a familiar corporate structure with shareholding flexibility, while an LLP combines partnership flexibility with limited liability. The best choice depends on funding plans, ownership, and compliance appetite.' },
+      { question: 'How long does company registration take in India?', answer: 'With complete documentation, incorporation through MCA can often be completed within 7–15 working days, subject to name approval and registry processing.' },
+    ],
+    image: '/Images/service-diligence.png',
+    relatedSlugs: ['due-diligence', 'fssai-registration', 'trademark-registration'],
+  },
 ]
 
 export function getServiceBySlug(slug) {

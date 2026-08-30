@@ -12,7 +12,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Our Services"
         title="Intellectual Property Services"
-        description="Ten specialized practice areas designed to protect, enforce, and maximize the value of your intellectual assets."
+        description="Comprehensive practice areas designed to protect, enforce, and maximize the value of your intellectual and business assets."
         image="/Images/service-trademark.png"
         imageAlt="Intellectual property services illustration"
       />

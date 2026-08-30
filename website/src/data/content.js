@@ -313,9 +313,20 @@ export function getBlogBySlug(slug) {
 }
 
 export const testimonials = [
-  { id: '1', quote: 'Markshell & Associates transformed our IP strategy from reactive to proactive. Their precision and responsiveness set a new standard for legal counsel.', author: 'Sarah Chen', role: 'Chief Legal Officer', company: 'Nova Tech Industries' },
-  { id: '2', quote: 'Exceptional counsel on trademark enforcement. They protected our brand with sophistication and unwavering commitment to our business objectives.', author: 'Rajesh Mehta', role: 'Founder & CEO', company: 'Artisan Co.' },
-  { id: '3', quote: 'Their due diligence team identified critical IP risks in our acquisition that saved us millions. Truly world-class expertise.', author: 'Michael Torres', role: 'VP Corporate Development', company: 'Vertex Holdings' },
+  {
+    id: '1',
+    quote: 'Markshell & Associates provided clear, practical guidance on protecting our brand and navigating compliance. Their team was responsive and professional throughout.',
+    author: 'Mohd. Imran Khan',
+    role: 'CEO',
+    company: 'IMSAMODA',
+  },
+  {
+    id: '2',
+    quote: 'We received excellent support for our business registrations and IP matters. The process was smooth, and we always knew the next step.',
+    author: 'Shaila Khan',
+    role: 'CEO',
+    company: 'Rampur ke Ghararey',
+  },
 ]
 
 
@@ -329,8 +340,19 @@ export const industries = [
 ]
 
 export const careers = [
-  { title: 'IP Intern', location: 'India', type: 'Full-time', experience: '0-1 years' },
+  {
+    slug: 'ip-intern',
+    title: 'IP Intern',
+    location: 'India',
+    type: 'Full-time',
+    experience: '0-1 years',
+    description: 'Support trademark, patent, and copyright matters while learning IP prosecution, research, and client communication in a fast-paced legal environment.',
+  },
 ]
+
+export function getCareerBySlug(slug) {
+  return careers.find((job) => job.slug === slug)
+}
 
 export const homeFaqs = [
   { question: 'How long does trademark registration take?', answer: 'Typically 8–14 months depending on jurisdiction and whether office actions arise. We provide timeline estimates during your initial consultation.' },

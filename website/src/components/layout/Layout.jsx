@@ -15,7 +15,7 @@ export function Layout() {
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-white">
         Skip to main content
       </a>
-      <header className="fixed top-0 right-0 left-0 z-50" role="banner">
+      <header className="relative z-50" role="banner">
         <TopBar />
         <Navbar />
       </header>

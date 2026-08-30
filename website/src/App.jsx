@@ -12,6 +12,7 @@ const TeamPage = lazy(() => import('@/pages/TeamPage'))
 const BlogPage = lazy(() => import('@/pages/BlogPage'))
 const BlogDetailPage = lazy(() => import('@/pages/BlogDetailPage'))
 const CareerPage = lazy(() => import('@/pages/CareerPage'))
+const CareerApplyPage = lazy(() => import('@/pages/CareerApplyPage'))
 const FAQsPage = lazy(() => import('@/pages/FAQsPage'))
 const ContactPage = lazy(() => import('@/pages/ContactPage'))
 const LegalDocumentPage = lazy(() => import('@/pages/LegalDocumentPage'))
@@ -39,6 +40,7 @@ export default function App() {
               <Route path="blog" element={<Suspense fallback={<PageLoader />}><BlogPage /></Suspense>} />
               <Route path="blog/:slug" element={<Suspense fallback={<PageLoader />}><BlogDetailPage /></Suspense>} />
               <Route path="career" element={<Suspense fallback={<PageLoader />}><CareerPage /></Suspense>} />
+              <Route path="career/:slug" element={<Suspense fallback={<PageLoader />}><CareerApplyPage /></Suspense>} />
               <Route path="faqs" element={<Suspense fallback={<PageLoader />}><FAQsPage /></Suspense>} />
               <Route path="contact" element={<Suspense fallback={<PageLoader />}><ContactPage /></Suspense>} />
               <Route path="privacy-policy" element={<Suspense fallback={<PageLoader />}><LegalDocumentPage /></Suspense>} />

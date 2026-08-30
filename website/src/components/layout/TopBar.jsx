@@ -47,20 +47,16 @@ function LinkedInIcon({ className }) {
 
 export function TopBar() {
   return (
-    <div className="border-b border-white/10 bg-navy">
-      <div className="container-custom flex h-9 items-center justify-between gap-4 md:h-10">
-        <p className="text-display hidden truncate text-sm font-semibold text-gold sm:block md:text-[15px]">
-          Protecting Innovation. Empowering Growth.
-        </p>
-
-        <div className="ml-auto flex items-center gap-3 text-xs text-gold/90 sm:gap-4 md:gap-5 md:text-sm">
+    <div className="bg-navy">
+      <div className="container-custom flex h-9 items-center justify-end md:h-10">
+        <div className="flex flex-wrap items-center justify-end gap-3 text-xs text-gold/90 sm:gap-4 md:gap-5 md:text-sm">
           <a
             href={`mailto:${EMAIL}`}
             className="flex items-center gap-1.5 transition-colors hover:text-gold-light"
             aria-label={`Email ${EMAIL}`}
           >
             <Mail className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-            <span className="hidden lg:inline">{EMAIL}</span>
+            <span className="hidden sm:inline">{EMAIL}</span>
           </a>
 
           <a
@@ -69,7 +65,7 @@ export function TopBar() {
             aria-label={`Call ${PHONE}`}
           >
             <Phone className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-            <span className="hidden md:inline">{PHONE}</span>
+            <span>{PHONE}</span>
           </a>
 
           <div className="flex items-center gap-1.5 sm:gap-2">

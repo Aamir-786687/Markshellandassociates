@@ -146,42 +146,64 @@ export function FloatingShape({ className }) {
   )
 }
 
-export function Marquee({ items, images, className, imageSrc, reverse = false, durationSeconds }) {
+export function Marquee({ clients, items, images, className, imageSrc, reverse = false, durationSeconds }) {
+  const clientList = clients ?? []
   const list = images ?? items ?? []
   const resolveSrc = imageSrc ?? ((item) => (item.startsWith('/') ? item : item))
-  const duration = durationSeconds ?? Math.max(60, list.length * 2.5)
+  const sourceList = clientList.length > 0 ? clientList : list
+  const duration = durationSeconds ?? Math.max(60, sourceList.length * 2.5)
   const animationClass = reverse ? 'animate-marquee-reverse' : 'animate-marquee'
 
   const renderTrack = (keyPrefix) => (
     <div className="flex shrink-0 items-center gap-6 md:gap-8">
-      {list.map((item, i) =>
-        images ? (
-          <div
-            key={`${keyPrefix}-${item}-${i}`}
-            className="flex size-[2in] shrink-0 items-center justify-center"
-          >
-            <img
-              src={resolveSrc(item)}
-              alt=""
-              className="size-[1.2in] object-contain p-1"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-        ) : (
-          <span
-            key={`${keyPrefix}-${item}-${i}`}
-            className="text-display shrink-0 px-3 text-2xl font-semibold tracking-wider text-navy/20 md:text-3xl"
-          >
-            {item}
-          </span>
-        ),
-      )}
+      {clientList.length > 0
+        ? clientList.map((client, i) => (
+            <div
+              key={`${keyPrefix}-${client.file}-${i}`}
+              className="flex w-[2.25in] shrink-0 flex-col items-center gap-2"
+            >
+              <div className="flex size-[2in] items-center justify-center">
+                <img
+                  src={imageSrc ? imageSrc(client.file) : `/Images/clients/${encodeURIComponent(client.file)}`}
+                  alt={client.name}
+                  className="size-[1.2in] object-contain p-1"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <p className="line-clamp-2 max-w-[2.25in] text-center text-sm font-bold leading-snug text-navy md:text-base">
+                {client.name}
+              </p>
+            </div>
+          ))
+        : list.map((item, i) =>
+            images ? (
+              <div
+                key={`${keyPrefix}-${item}-${i}`}
+                className="flex size-[2in] shrink-0 items-center justify-center"
+              >
+                <img
+                  src={resolveSrc(item)}
+                  alt=""
+                  className="size-[1.2in] object-contain p-1"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            ) : (
+              <span
+                key={`${keyPrefix}-${item}-${i}`}
+                className="text-display shrink-0 px-3 text-2xl font-semibold tracking-wider text-navy/20 md:text-3xl"
+              >
+                {item}
+              </span>
+            ),
+          )}
     </div>
   )
 
   return (
-    <div className={cn('overflow-hidden', className)} aria-hidden="true">
+    <div className={cn('overflow-hidden', className)}>
       <div
         className={cn('flex w-max items-center gap-6 md:gap-8', animationClass)}
         style={{ animationDuration: `${duration}s` }}

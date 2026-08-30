@@ -1,18 +1,23 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { ArrowLeft } from 'lucide-react'
 import { FIRM_NAME } from '@/data/brand'
+import { getCareerBySlug } from '@/data/content'
 import { SEO } from '@/components/layout/SEO'
 import { PageHero } from '@/components/layout/PageHero'
 import { FadeIn } from '@/components/animations/MotionPrimitives'
-import { services } from '@/data/services'
-import { submitContactForm } from '@/lib/contact'
-import { isContactFormConfigured } from '@/lib/env'
+import { submitCareerApplicationForm } from '@/lib/career'
 
-export default function ContactPage() {
+export default function CareerApplyPage() {
+  const { slug } = useParams()
+  const job = slug ? getCareerBySlug(slug) : undefined
   const [status, setStatus] = useState('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm()
+
+  if (!job) return <Navigate to="/career" replace />
 
   const onSubmit = async (data) => {
     if (data._hp) {
@@ -24,55 +29,66 @@ export default function ContactPage() {
     setStatus('idle')
     setErrorMessage('')
 
-    if (!isContactFormConfigured) {
-      setStatus('error')
-      setErrorMessage('The contact form is not configured yet. Please email us directly at markshellassociates@gmail.com.')
-      return
-    }
-
     try {
-      await submitContactForm(data)
+      await submitCareerApplicationForm(data, job)
       reset()
       setStatus('success')
     } catch (error) {
       setStatus('error')
       if (error instanceof Error) {
-        if (error.message === 'CONTACT_NOT_CONFIGURED' || error.code === 'CONTACT_NOT_CONFIGURED') {
-          setErrorMessage('The contact form is not configured yet. Please email us directly at markshellassociates@gmail.com.')
+        if (error.message === 'CAREER_APPLY_NOT_CONFIGURED' || error.code === 'CAREER_APPLY_NOT_CONFIGURED') {
+          setErrorMessage('Applications are not configured yet. Please email your resume to markshellassociates@gmail.com.')
+        } else if (error.message === 'RESUME_TOO_LARGE') {
+          setErrorMessage('Resume must be smaller than 2 MB.')
+        } else if (error.message === 'RESUME_INVALID_TYPE') {
+          setErrorMessage('Resume must be a PDF or Word document.')
         } else if (error.code === 'SUBMIT_FAILED') {
-          setErrorMessage('Something went wrong while sending your message. Please try again or email markshellassociates@gmail.com.')
-        } else if (typeof error.code === 'string') {
-          setErrorMessage(error.code)
+          setErrorMessage('Something went wrong while sending your application. Please try again or email markshellassociates@gmail.com.')
         } else {
-          setErrorMessage('Something went wrong while sending your message. Please try again or email markshellassociates@gmail.com.')
+          setErrorMessage(typeof error.code === 'string' ? error.code : 'Unable to submit your application. Please try again.')
         }
       } else {
-        setErrorMessage('Something went wrong while sending your message. Please try again or email markshellassociates@gmail.com.')
+        setErrorMessage('Unable to submit your application. Please try again.')
       }
     }
   }
 
   return (
     <>
-      <SEO title="Contact Us" description={`Get in touch with ${FIRM_NAME} for a confidential IP consultation.`} path="/contact" image="/Images/contact-main.png" />
+      <SEO
+        title={`Apply — ${job.title}`}
+        description={`Apply for the ${job.title} role at ${FIRM_NAME}.`}
+        path={`/career/${job.slug}`}
+        image="/Images/career-main.png"
+      />
 
       <PageHero
-        eyebrow="Contact"
-        title="Get in Touch"
-        description="Schedule a confidential consultation with our intellectual property specialists."
-        image="/Images/contact-main.png"
-        imageAlt="Contact illustration"
+        eyebrow="Career Application"
+        title={job.title}
+        description={`${job.location} · ${job.type} · ${job.experience}`}
+        image="/Images/career-main.png"
+        imageAlt="Career application illustration"
       />
 
       <section className="page-section-end bg-surface">
         <div className="container-custom max-w-3xl">
           <FadeIn type="fadeLeft">
+            <Link to="/career" className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-gold">
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              Back to Careers
+            </Link>
+
+            {job.description ? (
+              <p className="mb-8 text-muted">{job.description}</p>
+            ) : null}
+
             <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-border bg-white p-8 md:p-10" noValidate>
-              <h2 className="text-display text-2xl font-semibold text-navy">Send a Message</h2>
+              <h2 className="text-display text-2xl font-semibold text-navy">Apply for this Role</h2>
+              <p className="mt-2 text-sm text-muted">Complete the form below. A confirmation email will be sent to the address you provide.</p>
 
               {status === 'success' ? (
                 <p className="mt-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800" role="status">
-                  Thank you for your message. A confirmation email has been sent to your inbox, and we will respond within 24 hours.
+                  Thank you for applying. A confirmation email has been sent to your inbox, and our team will review your application shortly.
                 </p>
               ) : null}
 
@@ -99,6 +115,7 @@ export default function ContactPage() {
                   />
                   {errors.name ? <p className="mt-1 text-xs text-red-600" role="alert">{errors.name.message}</p> : null}
                 </div>
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-navy">Email *</label>
                   <input
@@ -115,6 +132,7 @@ export default function ContactPage() {
                   />
                   {errors.email ? <p className="mt-1 text-xs text-red-600" role="alert">{errors.email.message}</p> : null}
                 </div>
+
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-navy">Phone</label>
                   <input
@@ -127,28 +145,47 @@ export default function ContactPage() {
                   />
                   {errors.phone ? <p className="mt-1 text-xs text-red-600" role="alert">{errors.phone.message}</p> : null}
                 </div>
+
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-navy">Service Interest</label>
-                  <select id="service" {...register('service')} className="mt-2 w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/20">
-                    <option value="">Select a service</option>
-                    {services.map((s) => <option key={s.slug} value={s.slug}>{s.title}</option>)}
-                  </select>
+                  <label htmlFor="linkedin" className="block text-sm font-medium text-navy">LinkedIn Profile</label>
+                  <input
+                    id="linkedin"
+                    type="url"
+                    maxLength={300}
+                    placeholder="https://linkedin.com/in/..."
+                    {...register('linkedin', { maxLength: { value: 300, message: 'URL is too long' } })}
+                    className="mt-2 w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/20"
+                  />
+                  {errors.linkedin ? <p className="mt-1 text-xs text-red-600" role="alert">{errors.linkedin.message}</p> : null}
                 </div>
               </div>
+
               <div className="mt-6">
-                <label htmlFor="message" className="block text-sm font-medium text-navy">Message *</label>
+                <label htmlFor="resume" className="block text-sm font-medium text-navy">Resume (PDF or Word, max 2 MB)</label>
+                <input
+                  id="resume"
+                  type="file"
+                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  {...register('resume')}
+                  className="mt-2 block w-full text-sm text-muted file:mr-4 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-sm file:font-semibold file:text-gold hover:file:bg-navy-light"
+                />
+              </div>
+
+              <div className="mt-6">
+                <label htmlFor="message" className="block text-sm font-medium text-navy">Cover Letter / Message *</label>
                 <textarea
                   id="message"
                   rows={5}
                   maxLength={5000}
                   {...register('message', {
-                    required: 'Message is required',
+                    required: 'Cover letter or message is required',
                     maxLength: { value: 5000, message: 'Message is too long' },
                   })}
                   className="mt-2 w-full resize-y rounded-xl border border-border px-4 py-3 text-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/20"
                 />
                 {errors.message ? <p className="mt-1 text-xs text-red-600" role="alert">{errors.message.message}</p> : null}
               </div>
+
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
@@ -156,7 +193,7 @@ export default function ContactPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Submitting...' : 'Submit Application'}
               </motion.button>
             </form>
           </FadeIn>
