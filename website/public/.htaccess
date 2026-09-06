@@ -8,6 +8,7 @@
   # API routes (Hostinger / Apache static hosting)
   RewriteRule ^api/contact$ api/contact.php [L,QSA]
   RewriteRule ^api/career-apply$ api/career-apply.php [L,QSA]
+  RewriteRule ^api/ping$ api/ping.php [L,QSA]
 
   # Serve existing files and folders
   RewriteCond %{REQUEST_FILENAME} -f [OR]

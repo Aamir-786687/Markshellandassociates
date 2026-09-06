@@ -49,14 +49,7 @@ $adminHtml = '
   <p>' . nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8')) . '</p>
 ';
 
-$userSent = api_send_mail(
-    $config,
-    $email,
-    'We Received Your Message | Markshell & Associates',
-    strip_tags($userHtml),
-    $userHtml
-);
-
+// Admin notification is required; confirmation to applicant is best-effort.
 $adminSent = api_send_mail(
     $config,
     $notifyEmail,
@@ -66,8 +59,16 @@ $adminSent = api_send_mail(
     $email
 );
 
-if (!$userSent || !$adminSent) {
+if (!$adminSent) {
     api_json_response(500, ['error' => 'SUBMIT_FAILED']);
 }
+
+api_send_mail(
+    $config,
+    $email,
+    'We Received Your Message | Markshell & Associates',
+    strip_tags($userHtml),
+    $userHtml
+);
 
 api_json_response(200, ['success' => true]);

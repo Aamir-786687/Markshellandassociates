@@ -80,14 +80,6 @@ $adminHtml = '
   <p>' . nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8')) . '</p>
 ';
 
-$userSent = api_send_mail(
-    $config,
-    $email,
-    'Application Received — ' . $jobTitle . ' | Markshell & Associates',
-    strip_tags($userHtml),
-    $userHtml
-);
-
 $adminSent = api_send_mail(
     $config,
     $notifyEmail,
@@ -98,8 +90,16 @@ $adminSent = api_send_mail(
     $attachments
 );
 
-if (!$userSent || !$adminSent) {
+if (!$adminSent) {
     api_json_response(500, ['error' => 'SUBMIT_FAILED']);
 }
+
+api_send_mail(
+    $config,
+    $email,
+    'Application Received — ' . $jobTitle . ' | Markshell & Associates',
+    strip_tags($userHtml),
+    $userHtml
+);
 
 api_json_response(200, ['success' => true]);

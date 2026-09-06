@@ -10,6 +10,22 @@ function api_json_response(int $status, array $payload): void
     exit;
 }
 
+function api_normalize_config(array $config): array
+{
+    $normalized = $config;
+
+    if (isset($normalized['smtp_pass']) && is_string($normalized['smtp_pass'])) {
+        // Gmail app passwords are often copied with spaces — remove them.
+        $normalized['smtp_pass'] = str_replace(' ', '', trim($normalized['smtp_pass']));
+    }
+
+    if (empty($normalized['smtp_from']) && !empty($normalized['smtp_user'])) {
+        $normalized['smtp_from'] = $normalized['smtp_user'];
+    }
+
+    return $normalized;
+}
+
 function api_load_config(): array
 {
     $path = __DIR__ . '/config.php';
@@ -22,7 +38,7 @@ function api_load_config(): array
         api_json_response(503, ['error' => 'CONTACT_NOT_CONFIGURED']);
     }
 
-    return $config;
+    return api_normalize_config($config);
 }
 
 function api_read_json_body(): array
@@ -70,7 +86,44 @@ function api_require_post(): void
     }
 }
 
-function api_send_mail(array $config, string $to, string $subject, string $textBody, string $htmlBody, ?string $replyTo = null, array $attachments = []): bool
+function api_encode_subject(string $subject): string
+{
+    if (preg_match('/[^\x20-\x7E]/', $subject)) {
+        return '=?UTF-8?B?' . base64_encode($subject) . '?=';
+    }
+
+    return $subject;
+}
+
+function api_send_mail_php(array $config, string $to, string $subject, string $htmlBody, ?string $replyTo = null): bool
+{
+    $from = $config['smtp_from'] ?? $config['smtp_user'] ?? '';
+    $fromName = $config['smtp_from_name'] ?? 'Markshell & Associates';
+
+    if ($from === '' || $to === '') {
+        return false;
+    }
+
+    $headers = [
+        'MIME-Version: 1.0',
+        'Content-Type: text/html; charset=UTF-8',
+        'From: ' . sprintf('"%s" <%s>', addslashes($fromName), $from),
+    ];
+
+    if ($replyTo) {
+        $headers[] = 'Reply-To: <' . $replyTo . '>';
+    }
+
+    return @mail($to, api_encode_subject($subject), $htmlBody, implode("\r\n", $headers));
+}
+
+function api_smtp_expect(string $response, array $codes): bool
+{
+    $code = (int) substr($response, 0, 3);
+    return in_array($code, $codes, true);
+}
+
+function api_send_mail_smtp(array $config, string $to, string $subject, string $htmlBody, ?string $replyTo = null): bool
 {
     $host = $config['smtp_host'] ?? '';
     $port = (int) ($config['smtp_port'] ?? 587);
@@ -85,7 +138,14 @@ function api_send_mail(array $config, string $to, string $subject, string $textB
     }
 
     $transport = $secure === 'ssl' ? "ssl://{$host}" : $host;
-    $socket = @fsockopen($transport, $port, $errno, $errstr, 30);
+    $socket = @stream_socket_client(
+        "{$transport}:{$port}",
+        $errno,
+        $errstr,
+        30,
+        STREAM_CLIENT_CONNECT
+    );
+
     if (!$socket) {
         return false;
     }
@@ -108,65 +168,110 @@ function api_send_mail(array $config, string $to, string $subject, string $textB
         return $read();
     };
 
-    $read();
-    $write('EHLO markshellandassociates.com');
-
-    if ($secure === 'tls') {
-        $write('STARTTLS');
-        if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
-            fclose($socket);
-            return false;
-        }
-        $write('EHLO markshellandassociates.com');
-    }
-
-    $write('AUTH LOGIN');
-    $write(base64_encode($user));
-    $auth = $write(base64_encode($pass));
-    if (strpos($auth, '235') === false) {
+    $greeting = $read();
+    if (!api_smtp_expect($greeting, [220])) {
         fclose($socket);
         return false;
     }
 
-    $write('MAIL FROM:<' . $from . '>');
-    $write('RCPT TO:<' . $to . '>');
-    $write('DATA');
+    $ehlo = $write('EHLO markshellandassociates.com');
+    if (!api_smtp_expect($ehlo, [250])) {
+        fclose($socket);
+        return false;
+    }
 
-    $boundary = 'b_' . bin2hex(random_bytes(8));
+    if ($secure === 'tls') {
+        $startTls = $write('STARTTLS');
+        if (!api_smtp_expect($startTls, [220])) {
+            fclose($socket);
+            return false;
+        }
+
+        $cryptoMethod = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+        if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) {
+            $cryptoMethod = STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+            if (defined('STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT')) {
+                $cryptoMethod |= STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT;
+            }
+        }
+
+        if (!stream_socket_enable_crypto($socket, true, $cryptoMethod)) {
+            fclose($socket);
+            return false;
+        }
+
+        $ehlo = $write('EHLO markshellandassociates.com');
+        if (!api_smtp_expect($ehlo, [250])) {
+            fclose($socket);
+            return false;
+        }
+    }
+
+    $authPrompt = $write('AUTH LOGIN');
+    if (!api_smtp_expect($authPrompt, [334])) {
+        fclose($socket);
+        return false;
+    }
+
+    $userPrompt = $write(base64_encode($user));
+    if (!api_smtp_expect($userPrompt, [334])) {
+        fclose($socket);
+        return false;
+    }
+
+    $authResult = $write(base64_encode($pass));
+    if (!api_smtp_expect($authResult, [235])) {
+        fclose($socket);
+        return false;
+    }
+
+    if (!api_smtp_expect($write('MAIL FROM:<' . $from . '>'), [250])) {
+        fclose($socket);
+        return false;
+    }
+
+    if (!api_smtp_expect($write('RCPT TO:<' . $to . '>'), [250, 251])) {
+        fclose($socket);
+        return false;
+    }
+
+    if (!api_smtp_expect($write('DATA'), [354])) {
+        fclose($socket);
+        return false;
+    }
+
     $headers = [
         'From: ' . sprintf('"%s" <%s>', addslashes($fromName), $from),
         'To: <' . $to . '>',
-        'Subject: ' . $subject,
+        'Subject: ' . api_encode_subject($subject),
         'MIME-Version: 1.0',
+        'Content-Type: text/html; charset=UTF-8',
+        'Content-Transfer-Encoding: 8bit',
     ];
 
     if ($replyTo) {
         $headers[] = 'Reply-To: <' . $replyTo . '>';
     }
 
-    if ($attachments) {
-        $headers[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
-        $body = "--{$boundary}\r\n";
-        $body .= "Content-Type: text/html; charset=UTF-8\r\n\r\n";
-        $body .= $htmlBody . "\r\n";
-        foreach ($attachments as $attachment) {
-            $body .= "--{$boundary}\r\n";
-            $body .= 'Content-Type: ' . $attachment['contentType'] . '; name="' . $attachment['filename'] . "\"\r\n";
-            $body .= "Content-Transfer-Encoding: base64\r\n";
-            $body .= 'Content-Disposition: attachment; filename="' . $attachment['filename'] . "\"\r\n\r\n";
-            $body .= chunk_split($attachment['data']) . "\r\n";
-        }
-        $body .= "--{$boundary}--";
-    } else {
-        $headers[] = 'Content-Type: text/html; charset=UTF-8';
-        $body = $htmlBody;
-    }
-
-    $message = implode("\r\n", $headers) . "\r\n\r\n" . $body . "\r\n.\r\n";
+    $message = implode("\r\n", $headers) . "\r\n\r\n" . $htmlBody . "\r\n.\r\n";
     fwrite($socket, $message);
     $result = $read();
+
     $write('QUIT');
     fclose($socket);
 
-    return strpos($result, '250') !== false;
+    return api_smtp_expect($result, [250]);
+}
+
+function api_send_mail(array $config, string $to, string $subject, string $textBody, string $htmlBody, ?string $replyTo = null, array $attachments = []): bool
+{
+    if ($attachments) {
+        return api_send_mail_smtp($config, $to, $subject, $htmlBody, $replyTo);
+    }
+
+    if (api_send_mail_smtp($config, $to, $subject, $htmlBody, $replyTo)) {
+        return true;
+    }
+
+    return api_send_mail_php($config, $to, $subject, $htmlBody, $replyTo);
 }

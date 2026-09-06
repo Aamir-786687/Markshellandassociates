@@ -4,7 +4,7 @@ export function getSmtpConfig(env) {
   const host = env.SMTP_HOST
   const port = Number(env.SMTP_PORT || 587)
   const user = env.SMTP_USER
-  const pass = env.SMTP_PASS
+  const pass = (env.SMTP_PASS || '').replace(/\s+/g, '')
   const from = env.SMTP_FROM || user
 
   if (!host || !user || !pass || !from) {
