@@ -96,7 +96,9 @@ export function TextReveal({ text, className, delay = 0 }) {
   )
 }
 
-export function ImageReveal({ src, alt, className, priority = false }) {
+export function ImageReveal({ src, alt, className, priority = false, objectFit = 'cover', imgClassName }) {
+  const contain = objectFit === 'contain'
+
   return (
     <motion.div
       className={cn('relative overflow-hidden', className)}
@@ -111,7 +113,10 @@ export function ImageReveal({ src, alt, className, priority = false }) {
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
-        className="h-full w-full object-cover"
+        className={cn(
+          contain ? 'mx-auto h-auto w-full object-contain' : 'h-full w-full object-cover',
+          imgClassName,
+        )}
         initial={priority ? { scale: 1 } : { scale: 1.15 }}
         whileInView={priority ? undefined : { scale: 1 }}
         animate={priority ? { scale: 1 } : undefined}

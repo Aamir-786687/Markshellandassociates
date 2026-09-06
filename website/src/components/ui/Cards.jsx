@@ -15,12 +15,12 @@ export function ServiceCard({ service, className, index = 0 }) {
       whileHover={{ y: -6 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="mb-6 aspect-[4/3] overflow-hidden rounded-xl bg-surface">
+      <div className="mb-6 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl border-2 border-border bg-white p-4">
         <img
           src={service.image}
           alt=""
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105"
         />
       </div>
       <span className="text-display text-xs font-semibold tracking-widest text-gold">

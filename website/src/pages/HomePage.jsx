@@ -38,7 +38,7 @@ export default function HomePage() {
         <FloatingShape className="pointer-events-none hidden lg:block top-32 -right-20 h-96 w-96" />
         <FloatingShape className="pointer-events-none hidden lg:block bottom-20 -left-32 h-64 w-64" />
 
-        <div className="container-custom grid items-start gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-16">
+        <div className="container-custom grid items-center gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-16">
           <div className="hero-text-stack">
             <FadeIn>
               <p className="section-eyebrow tracking-[0.2em]">Intellectual Property Law</p>
@@ -71,7 +71,9 @@ export default function HomePage() {
                 src="/Images/hero-main.png"
                 alt="Abstract illustration representing intellectual property protection and innovation"
                 priority
-                className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-strong"
+                objectFit="contain"
+                className="relative flex w-full items-center justify-center rounded-3xl border-2 border-border bg-white p-6 shadow-strong"
+                imgClassName="max-h-[min(520px,58vh)]"
               />
             </div>
           </FadeIn>

@@ -13,7 +13,7 @@ export default function ServicesPage() {
         eyebrow="Our Services"
         title="Intellectual Property Services"
         description="Comprehensive practice areas designed to protect, enforce, and maximize the value of your intellectual and business assets."
-        image="/Images/service-trademark.png"
+        image="/Images/sevice-main.jpeg"
         imageAlt="Intellectual property services illustration"
       />
 

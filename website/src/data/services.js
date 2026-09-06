@@ -18,7 +18,7 @@ export const services = [
     benefits: ['Comprehensive clearance analysis', 'Multi-jurisdiction filing strategy', 'Portfolio monitoring and renewal management', 'Brand licensing and assignment support', 'Opposition and cancellation defense'],
     process: defaultProcess,
     faqs: [...defaultFaqs, { question: 'What makes a strong trademark?', answer: 'Distinctiveness, non-descriptiveness, and proper classification are key. We guide you through selection and registration strategy.' }],
-    image: '/Images/service-trademark.png',
+    image: '/Images/service-trademark.jpeg',
     relatedSlugs: ['trademark-enforcement', 'trademark-infringement', 'design-registration'],
   },
   {
@@ -27,7 +27,7 @@ export const services = [
     overview: 'We guide innovators through the complete patent lifecycle — patentability opinions, provisional and non-provisional applications, PCT international filing, and prosecution before patent offices worldwide.',
     benefits: ['Patentability and freedom-to-operate analysis', 'Utility and design patent prosecution', 'PCT and national phase entry', 'Patent portfolio strategy', 'Technology transfer support'],
     process: defaultProcess, faqs: defaultFaqs,
-    image: '/Images/service-patent.png',
+    image: '/Images/service-patent.jpeg',
     relatedSlugs: ['design-registration', 'due-diligence', 'property-litigation'],
   },
   {
@@ -36,7 +36,7 @@ export const services = [
     overview: 'We assist creators and enterprises in securing copyright protection for original works — including software, literary content, artistic creations, and multimedia — with registration, licensing, and enforcement strategies.',
     benefits: ['Registration across multiple work categories', 'Licensing and assignment agreements', 'DMCA takedown and enforcement', 'Fair use and licensing counsel', 'Digital rights management strategy'],
     process: defaultProcess, faqs: defaultFaqs,
-    image: '/Images/service-copyright.png',
+    image: '/Images/service-copyright.jpeg',
     relatedSlugs: ['trademark-registration', 'trademark-infringement', 'due-diligence'],
   },
   {
@@ -45,7 +45,7 @@ export const services = [
     overview: 'Our design registration practice protects the ornamental and aesthetic aspects of products — from consumer goods to industrial equipment — through Hague System international registrations and national design patents.',
     benefits: ['Design search and clearance', 'Hague System international filing', 'Design patent prosecution', 'Portfolio alignment with trademark strategy', 'Enforcement against design copying'],
     process: defaultProcess, faqs: defaultFaqs,
-    image: '/Images/service-design.png',
+    image: '/Images/service-design.jpeg',
     relatedSlugs: ['patent-registration', 'trademark-registration', 'trademark-enforcement'],
   },
   {
@@ -99,7 +99,7 @@ export const services = [
     overview: 'We counsel producers and associations on registering and enforcing geographical indications — protecting regional products, agricultural goods, and artisanal crafts under national and international frameworks.',
     benefits: ['GI registration strategy', 'Appellation of origin protection', 'Collective mark coordination', 'Enforcement against misuse', 'International GI treaty navigation'],
     process: defaultProcess, faqs: defaultFaqs,
-    image: '/Images/service-gi.png',
+    image: '/Images/service-gi.jpeg',
     relatedSlugs: ['trademark-registration', 'trademark-enforcement', 'copyright-registration'],
   },
   {
@@ -118,7 +118,7 @@ export const services = [
       { question: 'Which FSSAI license does my business need?', answer: 'Basic registration applies to small businesses below specified turnover thresholds. State and central licenses depend on business scale, product category, and operational footprint. We advise during consultation.' },
       { question: 'How long does FSSAI registration take?', answer: 'Basic registration may be processed within 7–15 working days in many cases. State and central licenses can take longer depending on documentation and authority processing times.' },
     ],
-    image: '/Images/service-gi.png',
+    image: '/Images/service-fssai.jpeg',
     relatedSlugs: ['trademark-registration', 'company-registration', 'due-diligence'],
   },
   {
@@ -137,7 +137,7 @@ export const services = [
       { question: 'What is the difference between a private limited company and an LLP?', answer: 'A private limited company offers a familiar corporate structure with shareholding flexibility, while an LLP combines partnership flexibility with limited liability. The best choice depends on funding plans, ownership, and compliance appetite.' },
       { question: 'How long does company registration take in India?', answer: 'With complete documentation, incorporation through MCA can often be completed within 7–15 working days, subject to name approval and registry processing.' },
     ],
-    image: '/Images/service-diligence.png',
+    image: '/Images/service-companyreg.jpeg',
     relatedSlugs: ['due-diligence', 'fssai-registration', 'trademark-registration'],
   },
 ]

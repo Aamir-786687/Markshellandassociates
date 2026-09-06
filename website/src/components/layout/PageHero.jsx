@@ -36,7 +36,9 @@ export function PageHero({
           <ImageReveal
             src={image}
             alt={imageAlt}
-            className="max-h-[min(420px,50vh)] rounded-3xl shadow-medium"
+            objectFit="contain"
+            className="flex w-full items-center justify-center rounded-3xl border-2 border-border bg-white p-4 shadow-medium"
+            imgClassName="max-h-[min(420px,50vh)] w-full object-contain"
           />
         </FadeIn>
       ) : null}
