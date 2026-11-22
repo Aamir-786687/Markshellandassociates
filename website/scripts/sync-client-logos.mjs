@@ -8,6 +8,9 @@ const outFile = path.join(root, 'src', 'data', 'trustClientLogos.js')
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|gif|svg)$/i
 
+/** Show these clients first (in this order), then the rest alphabetically. */
+const PRIORITY_NAMES = ['KT', 'Yaxon']
+
 function displayName(filename) {
   return filename.replace(/\.[^.]+$/, '').trim()
 }
@@ -18,7 +21,18 @@ const files = fs
     const fullPath = path.join(clientsDir, f)
     return fs.statSync(fullPath).isFile() && IMAGE_EXT.test(f)
   })
-  .sort((a, b) => displayName(a).localeCompare(displayName(b), undefined, { numeric: true }))
+
+const priorityRank = new Map(PRIORITY_NAMES.map((name, index) => [name.toLowerCase(), index]))
+
+files.sort((a, b) => {
+  const nameA = displayName(a)
+  const nameB = displayName(b)
+  const rankA = priorityRank.has(nameA.toLowerCase()) ? priorityRank.get(nameA.toLowerCase()) : Number.POSITIVE_INFINITY
+  const rankB = priorityRank.has(nameB.toLowerCase()) ? priorityRank.get(nameB.toLowerCase()) : Number.POSITIVE_INFINITY
+
+  if (rankA !== rankB) return rankA - rankB
+  return nameA.localeCompare(nameB, undefined, { numeric: true })
+})
 
 const entries = files.map((file) => ({
   name: displayName(file),

@@ -1,5 +1,7 @@
-/** Auto-synced from public/Images/clients (47 logos). Run: npm run sync:client-logos */
+/** Auto-synced from public/Images/clients (49 logos). Run: npm run sync:client-logos */
 export const trustClientLogos = [
+  { name: "KT", file: "KT.jpeg" },
+  { name: "Yaxon", file: "Yaxon.jpeg" },
   { name: "Akco Foodie Studio", file: "Akco Foodie Studio.jpeg" },
   { name: "Alto", file: "Alto.jpeg" },
   { name: "Amigo Taco", file: "Amigo Taco.jpeg" },
